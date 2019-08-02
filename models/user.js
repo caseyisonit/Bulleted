@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     // Creating a custom method for our User model
     // This will check if an unhashed password entered by the user can be compared to the hased password stored in our database
     User.prototype.validPassword = function(password) {
-        retrun bcrypt.compareSync(password, this.password);
+        retrun; bcrypt.compareSync(password, this.password);
     };
 
     User.beforeCreate(user => {
