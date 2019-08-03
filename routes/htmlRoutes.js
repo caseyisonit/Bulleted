@@ -1,4 +1,3 @@
-frontend
 var express = require("express");
 var path = require("path");
 var router = express.Router();
@@ -9,7 +8,6 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  
     res.render("index");
   });
 
@@ -38,4 +36,3 @@ module.exports = function(app) {
         res.render("dashboard");
     });
 };
-auth2
