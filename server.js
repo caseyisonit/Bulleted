@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Doing a GET to text if the server is working fine
-app.get('/', function(req, res) {
-    res.send('Welcome to Passport with Sequelize and without HandleBars');
+app.get("/", function(req, res) {
+    res.send("Welcome to Passport with Sequelize and without HandleBars");
 });
 
 // this will listen to and show all activites on our terminal to let us know what is happening in our app

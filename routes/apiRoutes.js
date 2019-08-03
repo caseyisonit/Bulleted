@@ -1,50 +1,4 @@
-var dbJournal = require("../models");
 
-module.exports = function (app) {
-
-    app.get("/api/todos", function (req, res) {
-        dbJournal.findAll({}).then(function (dbJournal) {
-            res.json(dbJournal);
-        });
-
-    });
-    app.post("/api/todos", function (req, res) {
-        dbJournal.create({
-            text: req.body.text,
-            complete: req.body.complete
-        }).then(function (dbJournal) {
-            res.json(dbJournal);
-        });
-
-    });
-
-    app.delete("/api/journals/:id", function (req, res) {
-        dbJournal.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function (dbJournal) {
-                res.json(dbJournal);
-            });
-
-    });
-
-    app.put("/api/journals", function (req, res) {
-        dbJournal.update({
-                text: req.body.text,
-                complete: req.body.complete
-            }, {
-                where: {
-                    id: req.body.id
-                }
-            })
-            .then(function (dbJournal) {
-                res.json(dbJournal);
-            });
-
-    });
-    
     // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
@@ -75,7 +29,7 @@ module.exports = function(app) {
         res.redirect("/");
     });
 
-    // Route for getting some data about our user to be used client side 
+    // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function(req, res) {
         if(!req.user) {
             // The user is not logged in, send back an empty object
@@ -90,5 +44,4 @@ module.exports = function(app) {
             });
         }
     });
-};
 };
