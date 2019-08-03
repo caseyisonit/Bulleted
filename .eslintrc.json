@@ -4,6 +4,9 @@
         "commonjs": true,
         "node": true
     },
+    "parserOptions": {
+        "ecmaVersion": 9
+    },
     "rules": {
         "no-duplicate-case":"error", //disallow duplicate case labels
         "no-empty":"error", //disallow empty block statements
@@ -34,4 +37,5 @@
             "always"
         ]
     }
+    
   }
