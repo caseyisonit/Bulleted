@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "node": true
+    },
+    "rules": {
+        "no-duplicate-case":"error", //disallow duplicate case labels
+        "no-empty":"error", //disallow empty block statements
+        "no-extra-semi":"error", //	disallow unnecessary semicolons
+        "no-func-assign": "error", //disallow reassigning function declarations
+        "no-irregular-whitespace":"error", //disallow irregular whitespace
+        "no-unreachable": "error", //disallow unreachable code after return, throw, continue, and break statements
+        "curly": "error",//enforce consistent brace style for all control statements
+        "dot-notation": "error", //	enforce dot notation whenever possible
+        "eqeqeq": "error", //require the use of === and !==
+        "no-empty-function": "error", // disallow empty functions
+        "no-multi-spaces": "error", //disallow multiple spaces
+        "no-mixed-spaces-and-tabs": "error", //disallow mixed spaces and tabs for indentation
+        "no-trailing-spaces": "error", //disallow trailing whitespace at the end of lines
+        "default-case": "error",//require default cases in switch statements
+        "no-fallthrough": "error", //disallow fallthrough of case statements
+        "no-unused-vars": "error", //disallow unused variables
+        "no-use-before-define": "error",//disallow the use of variables before they are defined
+        "no-redeclare": "error", //disallow variable redeclaration
+        "camelcase": "error", //enforce camelcase naming convention
+        "brace-style": "error", //enforce consistent brace style for blocks
+        "quotes": [//enforce the consistent use of either double or single quotes in JSX attributes
+            "error",
+            "double"
+        ],
+        "semi": [//	require or disallow semicolons instead of ASI
+            "error",
+            "always"
+        ]
+    }
+  }
