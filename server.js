@@ -1,3 +1,4 @@
+
 // Requiring necessary npm middleware packages
 var express = require("express");
 var bodyParser = require("body-parser");
@@ -58,4 +59,5 @@ db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
+auth2
 });
