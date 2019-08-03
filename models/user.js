@@ -1,6 +1,6 @@
 // Requiring bcrypt for password hashing.  Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 
-var bcrypt = require("bcryptjs");
+var bcrypt = require("bcrypt");
 
 // Creating our User model
 // Set it as export because we will need it required on the server
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     // Creating a custom method for our User model
     // This will check if an unhashed password entered by the user can be compared to the hased password stored in our database
     User.prototype.validPassword = function(password) {
-        retrun; bcrypt.compareSync(password, this.password);
+        return bcrypt.compareSync(password, this.password);
     };
 
     User.beforeCreate(user => {

@@ -2,9 +2,15 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
+var flash = require('connect-flash');
+
+
+
+
 
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+var passport = require("passport");
+require("./config/passport");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -17,14 +23,30 @@ app.use(bodyParser.urlencoded({ extended: false })); // For body parser
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // We need to use sessions to keep trach of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success_message = req.flash('success_message');
+  res.locals.error_message = req.flash('error_message');
+  res.locals.error = req.flash('error');
+  next();
+})
+
+
 // Requiring our routes
 require("./routes/htmlRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
+
+
 
 // Doing a GET to text if the server is working fine
 // app.get("/", function(req, res) {
