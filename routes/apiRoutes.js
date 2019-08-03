@@ -62,7 +62,7 @@ module.exports = function (app) {
                 res.redirect(307, "/api/login");
             }).catch(function (err) {
                 console.log(err);
-                res.json(err);
+                res.render("signup");
             });
         });
         // Route for logging user out
@@ -78,7 +78,7 @@ module.exports = function (app) {
                 res.json({});
             } else {
                 // Other wise send back the user's email and id
-                // Sendinb back a password, even a hashed password, isn't a good idea
+                // Sending back a password, even a hashed password, isn't a good idea
                 res.json({
                     email: req.user.email,
                     id: req.user.id
