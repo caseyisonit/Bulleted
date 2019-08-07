@@ -1,16 +1,16 @@
-INSERT INTO todays (todos) VALUES ("please don't cry...again");
-INSERT INTO todays (todos) VALUES ("pump some iron");
-INSERT INTO todays (todos) VALUES ("call your sweet Grannykins");
+INSERT INTO todays (todo) VALUES ("please don't cry...again");
+INSERT INTO todays (todo) VALUES ("pump some iron");
+INSERT INTO todays (todo) VALUES ("call your sweet Grannykins");
 
 
-INSERT INTO weeks (todos) VALUES ("grocery shopping: doo doo paper, mouth rinse, prunes");
-INSERT INTO weeks (todos) VALUES ("oil change");
-INSERT INTO weeks (todos) VALUES ("laundry");
+INSERT INTO weeks (todo) VALUES ("grocery shopping: doo doo paper, mouth rinse, prunes");
+INSERT INTO weeks (todo) VALUES ("oil change");
+INSERT INTO weeks (todo) VALUES ("laundry");
 
 
-INSERT INTO months (todos) VALUES ("eat less healthy");
-INSERT INTO months (todos) VALUES ("learn how to fly");
-INSERT INTO months (todos) VALUES ("get hair did");
+INSERT INTO months (todo) VALUES ("eat less healthy");
+INSERT INTO months (todo) VALUES ("learn how to fly");
+INSERT INTO months (todo) VALUES ("get hair did");
 
 
 INSERT INTO journals (title, body) VALUES ("Fresh Prince", "In West Philadelphia born and raised, on the playground is where I spend most of my days...");
