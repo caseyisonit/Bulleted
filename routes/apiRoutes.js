@@ -53,7 +53,7 @@ module.exports = function (app) {
         });
 
         // Route for siging up a user. The user's password is automatically hashed and stored securely thanks to how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in, otherwise send back an error
-        router.post('/signup', (req, res) => {
+        app.post('/api/signup', (req, res) => {
             let { fName, lName, email, password, password2 } = req.body;
           
             console.log(req.body);
@@ -69,6 +69,8 @@ module.exports = function (app) {
               errors.push({ message: 'Password needs to be at least 6 characters long '})
             }
             if (errors.length > 0) {
+                console.log(errors);
+                
               res.render('signup', {
                 errors,
                 fName,
@@ -76,7 +78,7 @@ module.exports = function (app) {
                 email,
                 password,
                 password2
-              })
+              });
             } else{
               Users.findOne({
                 where: {
@@ -89,10 +91,11 @@ module.exports = function (app) {
                     errors,
                     email
                   })
-                } else {db.User.create({
-                    email: req.body.email,
-                    password: req.body.password
-                }).then(function (dbUser) {
+                } else {
+                    db.User.create({
+                        email: req.body.email,
+                        password: req.body.password
+                    }).then(function (dbUser) {
                     console.log(dbUser);
                           // redirect
                           req.flash('success_message', 'You are now signed up and can log in')
@@ -102,24 +105,25 @@ module.exports = function (app) {
                         res.render("signup");
                     });
         
-                    })
+                    }
                   })
                 }
+
               });
-            }
-          })
+        //     }
+        //   })
           
 
 
-                db.User.create({
-                    email: req.body.email,
-                    password: req.body.password
-                }).then(function () {
-                    res.redirect(307, "/api/login");
-                }).catch(function (err) {
-                    console.log(err);
-                    res.render("signup");
-                });
+                // db.User.create({
+                //     email: req.body.email,
+                //     password: req.body.password
+                // }).then(function () {
+                //     res.redirect(307, "/api/login");
+                // }).catch(function (err) {
+                //     console.log(err);
+                //     res.render("signup");
+                // });
             // Route for logging user out
             app.get("/logout", function (req, res) {
                 req.logout();
