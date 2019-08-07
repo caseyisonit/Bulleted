@@ -4,15 +4,18 @@ var router = express.Router();
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
-    res.render("index");
-  });
+
 
 // Requiring our custom middleware for checking if a user is logged in
 
 
 module.exports = function(app) {
+
     app.get("/", function(req, res) {
+        res.render("index");
+      });
+
+    app.get("/signup", function(req, res) {
         // If the user already has an account send them to the memebers page
         if (req.user) {
             res.redirect("/members");
