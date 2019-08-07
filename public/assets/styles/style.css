@@ -1,18 +1,52 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
+
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
 
 nav ul a,
 nav .brand-logo {
   color: #444;
 }
 
+#logo-container {
+  height: 70%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+h1, h2, h3 {
+  font-family: 'Rock Salt', cursive;
+}
+
+h1, h3 {
+  background-color: rgba(255, 193, 7, 0.8);
+}
+
+h3 {
+  text-align: center;
+}
+
 p {
   line-height: 2rem;
+  padding-top: 20px;
+  margin: 0px 50px;
 }
 
 .sidenav-trigger {
@@ -20,29 +54,61 @@ p {
 }
 
 .parallax-container {
-  min-height: 380px;
+  /* min-height: 380px; */
   line-height: 0;
-  height: auto;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   color: rgba(255,255,255,.9);
 }
   .parallax-container .section {
     width: 100%;
   }
+  
+.parallax {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);  
+}
+
+.dot-bg {
+  background-image: url("/images/worn_dots.png");
+  background-repeat: repeat;
+}
+
+.text-block {
+  
+}
+
+.feature-img {
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.space{
+  padding: 75px 0;
+}
 
 @media only screen and (max-width : 992px) {
-  .parallax-container .section {
+  /* .parallax-container .section {
     position: absolute;
-    top: 40%;
+    top: 50%;
   }
   #index-banner .section {
-    top: 10%;
+    top: 50%;
+  } */
+  #logo-container {
+    left: 50%;
   }
 }
 
 @media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
+  /* #index-banner .section {
+    top: 50%;
+  } */
 }
 
 .icon-block {
