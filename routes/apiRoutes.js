@@ -4,46 +4,46 @@ var passport = require("../config/passport");
 
 module.exports = function (app) {
 
-    app.get("/api/todos", function (req, res) {
-        dbJournal.findAll({}).then(function (dbJournal) {
-            res.json(dbJournal);
-        });
-
-    });
-    app.post("/api/todos", function (req, res) {
-        dbJournal.create({
-            text: req.body.text,
-            complete: req.body.complete
-        }).then(function (dbJournal) {
-            res.json(dbJournal);
-        });
-
-    });
-
-    app.delete("/api/journals/:id", function (req, res) {
-        dbJournal.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function (dbJournal) {
+        app.get("/api/todos", function (req, res) {
+            dbJournal.findAll({}).then(function (dbJournal) {
                 res.json(dbJournal);
             });
 
-    });
-
-    app.put("/api/journals", function (req, res) {
-        dbJournal.update({
+        });
+        app.post("/api/todos", function (req, res) {
+            dbJournal.create({
                 text: req.body.text,
                 complete: req.body.complete
-            }, {
-                where: {
-                    id: req.body.id
-                }
-            })
-            .then(function (dbJournal) {
+            }).then(function (dbJournal) {
                 res.json(dbJournal);
             });
+
+        });
+
+        app.delete("/api/journals/:id", function (req, res) {
+            dbJournal.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(function (dbJournal) {
+                    res.json(dbJournal);
+                });
+
+        });
+
+        app.put("/api/journals", function (req, res) {
+            dbJournal.update({
+                    text: req.body.text,
+                    complete: req.body.complete
+                }, {
+                    where: {
+                        id: req.body.id
+                    }
+                })
+                .then(function (dbJournal) {
+                    res.json(dbJournal);
+                });
         });
 
         // Using the passport.authenticate middleware with our local strategy.  If the user has valid login credentials, send them to the members page, otherwise the user will be sent an error
@@ -53,37 +53,92 @@ module.exports = function (app) {
         });
 
         // Route for siging up a user. The user's password is automatically hashed and stored securely thanks to how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in, otherwise send back an error
-        app.post("/api/signup", function (req, res) {
+        router.post('/signup', (req, res) => {
+            let { fName, lName, email, password, password2 } = req.body;
+          
             console.log(req.body);
-            db.User.create({
-                email: req.body.email,
-                password: req.body.password
-            }).then(function () {
-                res.redirect(307, "/api/login");
-            }).catch(function (err) {
-                console.log(err);
-                res.render("signup");
-            });
-        });
-        // Route for logging user out
-        app.get("/logout", function (req, res) {
-            req.logout();
-            res.redirect("/");
-        });
-
-        // Route for getting some data about our user to be used client side
-        app.get("/api/user_data", function (req, res) {
-            if (!req.user) {
-                // The user is not logged in, send back an empty object
-                res.json({});
-            } else {
-                // Other wise send back the user's email and id
-                // Sending back a password, even a hashed password, isn't a good idea
-                res.json({
-                    email: req.user.email,
-                    id: req.user.id
-                });
+          
+            let errors =[]
+            if (!fName || !lName || !email || !password || !password2 ) {
+              errors.push({ message: 'Please fill in all fields'})
             }
-        });
+            if (password !== password2){
+              errors.push({ message: 'Passwords do not match'})
+            }
+            if (password.length < 6){
+              errors.push({ message: 'Password needs to be at least 6 characters long '})
+            }
+            if (errors.length > 0) {
+              res.render('signup', {
+                errors,
+                fName,
+                lName,
+                email,
+                password,
+                password2
+              })
+            } else{
+              Users.findOne({
+                where: {
+                  email: email
+                }
+              }).then((dbUsers) => {
+                if (dbUsers) {
+                  errors.push({ message: 'Email already exists please log in'})
+                  res.render('login', {
+                    errors,
+                    email
+                  })
+                } else {db.User.create({
+                    email: req.body.email,
+                    password: req.body.password
+                }).then(function (dbUser) {
+                    console.log(dbUser);
+                          // redirect
+                          req.flash('success_message', 'You are now signed up and can log in')
+                          res.redirect("/login");
+                    }).catch(function (err) {
+                        console.log(err);
+                        res.render("signup");
+                    });
+        
+                    })
+                  })
+                }
+              });
+            }
+          })
+          
 
-};
+
+                db.User.create({
+                    email: req.body.email,
+                    password: req.body.password
+                }).then(function () {
+                    res.redirect(307, "/api/login");
+                }).catch(function (err) {
+                    console.log(err);
+                    res.render("signup");
+                });
+            // Route for logging user out
+            app.get("/logout", function (req, res) {
+                req.logout();
+                res.redirect("/");
+            });
+
+            // Route for getting some data about our user to be used client side
+            app.get("/api/user_data", function (req, res) {
+                if (!req.user) {
+                    // The user is not logged in, send back an empty object
+                    res.json({});
+                } else {
+                    // Other wise send back the user's email and id
+                    // Sending back a password, even a hashed password, isn't a good idea
+                    res.json({
+                        email: req.user.email,
+                        id: req.user.id
+                    });
+                }
+            });
+
+        };
