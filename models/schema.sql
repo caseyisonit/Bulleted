@@ -1,10 +1,9 @@
 ### Schema
-
 DROP DATABASE IF EXISTS database_development;
 
-CREATE DATABASE database_development;
+CREATE DATABASE users_db;
 
-USE database_development;
+USE users_db;
 
 CREATE TABLE todays
 (
@@ -38,7 +37,4 @@ CREATE TABLE journals
 	body text,
 	PRIMARY KEY (id)
 );
-
-
-
 
