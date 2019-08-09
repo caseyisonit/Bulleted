@@ -1,9 +1,9 @@
 ### Schema
 DROP DATABASE IF EXISTS database_development;
 
-CREATE DATABASE users_db;
+CREATE DATABASE database_development;
 
-USE users_db;
+USE database_development;
 
 
 
