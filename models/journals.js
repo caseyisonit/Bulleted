@@ -1,12 +1,11 @@
-"use strict";
-var sequelize =
+
 module.exports = (sequelize, DataTypes) => {
   const Journals = sequelize.define("Journals", {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     title: {
       type: DataTypes.STRING,
@@ -16,19 +15,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
   }, {});
   Journals.associate = function(models) {
     Journals.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
-    Journals.hasMany(models.Weeks, {through: "Weeks", foreignKey: "WeeksId", as: "weeks"});
-    Journals.hasMany(models.Months, {through: "Months", foreignKey: "MonthsId", as: "months"}),
-    Journals.hasMany(models.Todays, {through: "Todays", foreignKey: "TodaysId", as: "todays"}),
-    Journals.hasMany(models.Trackers, {through: "Trackers", foreignKey: "TrackersId", as: "trackers"})
+    Journals.belongsToMany(models.Weeks, {through: "Weeks", foreignKey: "WeeksId", as: "weeks"});
+    Journals.belongsToMany(models.Months, {through: "Months", foreignKey: "MonthsId", as: "months"}),
+    Journals.belongsToMany(models.Todays, {through: "Todays", foreignKey: "TodaysId", as: "todays"}),
+    Journals.belongsToMany(models.Trackers, {through: "Trackers", foreignKey: "TrackersId", as: "trackers"})
   };
   return Journals;
 };
