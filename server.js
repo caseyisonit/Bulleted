@@ -55,7 +55,7 @@ require("./routes/apiRoutes.js")(app);
 // });
 
 // this will listen to and show all activites on our terminal to let us know what is happening in our app
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });

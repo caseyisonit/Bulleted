@@ -96,9 +96,7 @@ module.exports = function (app) {
                     });
                     }
                   });
-                
 
-              
                 // db.User.create({
                 //     email: req.body.email,
                 //     password: req.body.password
