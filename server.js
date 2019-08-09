@@ -11,7 +11,7 @@ var flash = require("connect-flash");
 
 // Requiring passport as we've configured it
 var passport = require("passport");
-require("./config/passport");
+// require("./config/passport");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8000;
