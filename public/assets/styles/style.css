@@ -125,6 +125,10 @@ footer.page-footer {
   box-sizing: border-box;
 }
 
+.divider {
+  margin-bottom: 20px;
+}
+
 /* Remove margins and padding from the list */
 ul {
   margin: 0;
@@ -132,7 +136,7 @@ ul {
 }
 
 /* Style the list items */
-ul li {
+ul#myUL li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
@@ -148,24 +152,24 @@ ul li {
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
+ul#myUL li:nth-child(odd) {
   background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
-ul li:hover {
+ul#myUL li:hover {
   background: #ddd;
 }
 
 /* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
+ul#myUL li.checked {
+  background: #ffc107;
   color: #fff;
   text-decoration: line-through;
 }
 
 /* Add a "checked" mark when clicked on */
-ul li.checked::before {
+ul#myUL li.checked::before {
   content: '';
   position: absolute;
   border-color: #fff;
@@ -187,7 +191,7 @@ ul li.checked::before {
 }
 
 .close:hover {
-  background-color: #f44336;
+  background-color: #ffc107;
   color: white;
 }
 
@@ -202,6 +206,11 @@ input {
   font-size: 16px;
 }
 
+input:focus {
+  border-bottom: 1px solid #ffc107 !important;
+  box-shadow: 0 1px 0 0 #ffc107 !important;
+}
+
 .card-action {
   display: flex;
 }
@@ -209,3 +218,4 @@ input {
 #addbtn {
   margin-left: 20px;
 }
+
