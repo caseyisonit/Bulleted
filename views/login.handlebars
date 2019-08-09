@@ -2,34 +2,23 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mb-3">Login</h1>
-      <!-- <% include ./partials/messages %> -->
+      
       {{> messages}}
       <form action="/api/login" method="POST">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            placeholder="Enter Email"
-          />
+      <div class="container">
+        <div class="input-field">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            placeholder="Enter Password"
-          />
+        <div class="input-field">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+          
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <button type="submit" class="btn btn-primary btn-large btn-block black">Login</button>
       </form>
       <p class="lead mt-4">
         No Account? <a href="/signup">Signup</a>
       </p>
     </div>
   </div>
+</div>
 </div>
