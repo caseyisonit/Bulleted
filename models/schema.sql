@@ -59,13 +59,3 @@ CREATE TABLE trackers
 );
 
 SELECT * FROM trackers;
-
-CREATE TABLE users
-(
-	id int NOT NULL AUTO_INCREMENT,
-	email VARCHAR (255) NOT NULL,
-	p_word VARCHAR (255) NOT NULL,
-	PRIMARY KEY (id)
-);
-
-SELECT * FROM users;
