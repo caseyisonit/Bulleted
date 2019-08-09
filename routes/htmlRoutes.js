@@ -3,9 +3,6 @@ var path = require("path");
 var router = express.Router();
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-// Import the model (cat.js) to use its database functions.
-// var cat = require("../models/cat.js");
-
 // Create all our routes and set up logic within those routes where required.
 
 
