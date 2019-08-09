@@ -6,6 +6,8 @@ CREATE DATABASE database_development;
 
 USE database_development;
 
+
+
 CREATE TABLE todays
 (
 	id int NOT NULL AUTO_INCREMENT,
