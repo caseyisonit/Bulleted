@@ -1,5 +1,6 @@
 var dbJournal = require("../models");
 var db = require("../models");
+var Users = db.Users;
 var passport = require("../config/passport");
 
 module.exports = function (app) {
@@ -53,48 +54,49 @@ module.exports = function (app) {
         });
 
         // Route for siging up a user. The user's password is automatically hashed and stored securely thanks to how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in, otherwise send back an error
-        app.post('/api/signup', (req, res) => {
-            let { fName, lName, email, password, password2 } = req.body;
-          
-            console.log(req.body.fName);
-            console.log(req.body.lName);
-            console.log(req.body.email);
-            console.log(req.body.password);
-            console.log(req.body.password2);
-          
-            let errors =[]
-            if (!fName || !lName || !email || !password || !password2 ) {
-              errors.push({ message: 'Please fill in all fields'})
+
+        app.post("/api/signup", (req, res) => {
+            let { fName, lname, email, password, password2 } = req.body;
+                      console.log(req.body);
+                      console.log(fName);
+                      console.log(lname);
+                      console.log(email);
+                      console.log(password);
+                      console.log(password2);
+            let errors =[];
+            if (!fName || !lname || !email || !password || !password2 ) {
+              // errors.push({ message: "Please fill in all fields"});
+
             }
             if (password !== password2){
-              errors.push({ message: 'Passwords do not match'})
+              errors.push({ message: "Passwords do not match"});
             }
             if (password.length < 6){
-              errors.push({ message: 'Password needs to be at least 6 characters long '})
+              errors.push({ message: "Password needs to be at least 6 characters long"});
             }
             if (errors.length > 0) {
                 console.log(errors);
-                
-              res.render('signup', {
+              res.render("signup", {
                 errors,
                 fName,
-                lName,
+                lname,
                 email,
                 password,
                 password2
               });
             } else{
+              console.log("EMAIL", email);
               Users.findOne({
                 where: {
-                  email: email
+                  email: req.body.email
                 }
               }).then((dbUsers) => {
                 if (dbUsers) {
-                  errors.push({ message: 'Email already exists please log in'})
-                  res.render('login', {
+                  errors.push({ message: "Email already exists - please log in"});
+                  res.render("login", {
                     errors,
                     email
-                  })
+                  });
                 } else {
                     db.User.create({
                         email: req.body.email,
@@ -102,23 +104,17 @@ module.exports = function (app) {
                     }).then(function (dbUser) {
                     console.log(dbUser);
                           // redirect
-                          req.flash('success_message', 'You are now signed up and can log in')
+                          req.flash("success_message", "You are now signed up and can log in");
                           res.redirect("/login");
                     }).catch(function (err) {
                         console.log(err);
                         res.render("signup");
                     });
-        
                     }
-                  })
+                  });
                 }
 
               });
-        //     }
-        //   })
-          
-
-
                 // db.User.create({
                 //     email: req.body.email,
                 //     password: req.body.password
