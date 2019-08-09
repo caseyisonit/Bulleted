@@ -1,19 +1,11 @@
 {
 
-    "mac-development": {
+    "development": {
       "username": "root",
-      "password": "root",
+      "password": "YES",
       "database": "database_development",
       "host": "127.0.0.1",
       "port": 8889,
-      "dialect": "mysql"
-    },
-    "development": {
-      "username": "root",
-      "password": "root",
-      "database": "database_development",
-      "host": "127.0.0.1",
-      "port": 3306,
       "dialect": "mysql"
     },
     "test": {

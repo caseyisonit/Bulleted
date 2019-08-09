@@ -56,16 +56,16 @@ module.exports = function (app) {
         // Route for siging up a user. The user's password is automatically hashed and stored securely thanks to how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in, otherwise send back an error
         app.post("/api/signup", (req, res) => {
             let { fName, lname, email, password, password2 } = req.body;
-                      console.log(req.body);
-                      console.log(fName);
-                      console.log(lname);
-                      console.log(email);
-                      console.log(password);
-                      console.log(password2);
-            let errors =[];
+          
+            console.log(req.body.fName);
+            console.log(req.body.lName);
+            console.log(req.body.email);
+            console.log(req.body.password);
+            console.log(req.body.password2);
+          
+            let errors =[]
             if (!fName || !lname || !email || !password || !password2 ) {
-              // errors.push({ message: "Please fill in all fields"});
-
+              errors.push({ message: "Please fill in all fields"})
             }
             if (password !== password2){
               errors.push({ message: "Passwords do not match"});
