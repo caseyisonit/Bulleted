@@ -56,7 +56,11 @@ module.exports = function (app) {
         app.post('/api/signup', (req, res) => {
             let { fName, lName, email, password, password2 } = req.body;
           
-            console.log(req.body);
+            console.log(req.body.fName);
+            console.log(req.body.lName);
+            console.log(req.body.email);
+            console.log(req.body.password);
+            console.log(req.body.password2);
           
             let errors =[]
             if (!fName || !lName || !email || !password || !password2 ) {

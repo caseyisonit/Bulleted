@@ -37,4 +37,3 @@ CREATE TABLE journals
 	body text,
 	PRIMARY KEY (id)
 );
-
