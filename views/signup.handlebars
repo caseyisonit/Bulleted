@@ -5,7 +5,7 @@
       
       {{> messages}}
       <form action="/api/signup" method="POST">
-      <div class="div container">
+      <div class="container">
         <div class="input-field">
           <input type="text" id="fName" name="fName" class="form-control" placeholder="Enter First Name" required
           />
@@ -30,7 +30,15 @@
           <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password">
           </div>
 
-        <button type="submit" class="btn btn-primary btn-block black waves-effect">Sign Up</button>
+<<<<<<< HEAD
+        <button type="submit" class="btn btn-primary btn-large btn-block black" id = "goToUserPage">Sign Up</button>
+=======
+
+        <button type="submit" class="btn btn-primary btn-block black waves-effect" id = "goToUserPage">Sign Up</button>
+
+        <button type="submit" class="btn btn-primary btn-large btn-block black">Sign Up</button>
+
+>>>>>>> b8f7d108338f02cfd32f70b12bf21039c7c6ba31
       </form>
       <p class="lead mt-4">Have An Account? <a href="/login">Login</a></p>
     </div>

@@ -18,7 +18,7 @@ for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
     div.style.display = "none";
-  }
+  };
 }
 
 // Add a "checked" symbol when clicking on a list item
@@ -35,7 +35,7 @@ function newElement() {
   var inputValue = document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
-  if (inputValue === '') {
+  if (inputValue === "") {
     alert("You must write something!");
   } else {
     document.getElementById("myUL").appendChild(li);
@@ -52,8 +52,23 @@ function newElement() {
     close[i].onclick = function() {
       var div = this.parentElement;
       div.style.display = "none";
-    }
+    };
   }
 }
 
 // End To-Do List
+$(function() {
+    $("#loginButton").on("click", function() {
+      window.location.replace("http://localhost:8000/login");
+      });
+    $("#signupButton").on("click", function(){
+        window.location.replace("http://localhost:8000/signup");
+    });
+    $("#startButton").on("click", function(event){
+        event.preventDefault();
+        window.location.replace("http://localhost:8000/signup");
+    });
+    $("#goToUserPage").on("click", function(){
+        window.location.replace("http://localhost:8000/members");
+    });
+    });
