@@ -1,4 +1,3 @@
-var dbJournal = require("../models");
 var db = require("../models");
 var Users = db.Users;
 var passport = require("../config/passport");
@@ -6,35 +5,35 @@ var passport = require("../config/passport");
 module.exports = function (app) {
 
         app.get("/api/todos", function (req, res) {
-            dbJournal.findAll({}).then(function (dbJournal) {
-                res.json(dbJournal);
+            db.findAll({}).then(function (results) {
+                res.json(results);
             });
 
         });
         app.post("/api/todos", function (req, res) {
-            dbJournal.create({
+            db.create({
                 text: req.body.text,
                 complete: req.body.complete
-            }).then(function (dbJournal) {
-                res.json(dbJournal);
+            }).then(function (db) {
+                res.json(db);
             });
 
         });
 
         app.delete("/api/journals/:id", function (req, res) {
-            dbJournal.destroy({
+            db.destroy({
                     where: {
                         id: req.params.id
                     }
                 })
-                .then(function (dbJournal) {
-                    res.json(dbJournal);
+                .then(function (db) {
+                    res.json(db);
                 });
 
         });
 
         app.put("/api/journals", function (req, res) {
-            dbJournal.update({
+            db.update({
                     text: req.body.text,
                     complete: req.body.complete
                 }, {
@@ -42,8 +41,8 @@ module.exports = function (app) {
                         id: req.body.id
                     }
                 })
-                .then(function (dbJournal) {
-                    res.json(dbJournal);
+                .then(function (db) {
+                    res.json(db);
                 });
         });
 
@@ -57,7 +56,7 @@ module.exports = function (app) {
         app.post("/api/signup", (req, res) => {
             let { fName, lname, email, password, password2 } = req.body;
             console.log(req.body.fName);
-            console.log(req.body.lName);
+            console.log(req.body.lname);
             console.log(req.body.email);
             console.log(req.body.password);
             console.log(req.body.password2);
@@ -96,9 +95,6 @@ module.exports = function (app) {
                     });
                     }
                   });
-                
-
-              
                 // db.User.create({
                 //     email: req.body.email,
                 //     password: req.body.password

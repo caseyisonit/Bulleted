@@ -31,4 +31,9 @@ module.exports = function(app) {
     app.get("/members", isAuthenticated, function(req, res) {
         res.render("dashboard");
     });
+
+    app.get("/user", function(req, res) {
+        res.render("dashboard");
+    });
+
 };
