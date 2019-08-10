@@ -19,6 +19,14 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        fName: {
+            type: DataTypes.STRING,
+            allowNull:false
+        },
+        lname: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 

@@ -83,7 +83,9 @@ module.exports = function (app) {
             } else {
                     db.User.create({
                         email: req.body.email,
-                        password: req.body.password
+                        password: req.body.password,
+                        fName: req.body.fName,
+                        lname: req.body.lname
                     }).then(function (dbUser) {
                     console.log(dbUser);
                           // redirect
@@ -108,6 +110,7 @@ module.exports = function (app) {
             app.get("/logout", function (req, res) {
                 req.logout();
                 res.redirect("/");
+                // window.location = "/";
             });
 
             // Route for getting some data about our user to be used client side

@@ -1,24 +1,30 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body">
-      <h1 class="text-center mb-3">Login</h1>
-      
-      {{> messages}}
-      <form action="/api/login" method="POST">
-      <div class="container">
-        <div class="input-field">
-          <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+<div class="section">
+  <div class="row center">
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8">
+      <div class="card white">
+        <div class="card-content gray-text text-darken-4">
+          <h1 class="text-center mb-3">Login</h1>
+
+          {{> messages}}
+          <form action="/api/login" method="POST">
+            <div class="container">
+              <div class="input-field">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+              </div>
+              <div class="input-field">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+
+              </div>
+              <button type="submit" class="btn-large waves-effect waves-light grey darken-4"
+                id="goToUserPage">Login</button>
+          </form>
+          <p class="lead mt-4">
+            No Account? <a href="/signup">Signup</a>
+          </p>
         </div>
-        <div class="input-field">
-          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
-          
-        </div>
-        <button type="submit" class="btn btn-primary btn-large btn-block black" id = "goToUserPage">Login</button>
-      </form>
-      <p class="lead mt-4">
-        No Account? <a href="/signup">Signup</a>
-      </p>
+      </div>
+      <div class="col s12 m4 l2"></div>
     </div>
   </div>
-</div>
-</div>
+  </div>
