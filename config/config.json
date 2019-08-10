@@ -2,10 +2,10 @@
 
     "development": {
       "username": "root",
-      "password": "YES",
+      "password": null,
       "database": "database_development",
       "host": "127.0.0.1",
-      "port": 8889,
+      "port": 3306,
       "dialect": "mysql"
     },
     "test": {
@@ -22,6 +22,7 @@
       "database": "database_production",
       "host": "127.0.0.1",
       "dialect": "mysql",
-      "operatorsAliases": false
+      "operatorsAliases": false,
+      "use_env_variable": "JAWS_DB_URL"
     }
   }

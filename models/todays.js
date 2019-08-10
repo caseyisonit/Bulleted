@@ -19,12 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
   }, {});
-  // Todays.associate = function(models) {
-  //   Todays.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
+  Todays.associate = function(models) {
+    Todays.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
   //   Todays.belongsToMany(models.Weeks, {through: "Weeks", foreignKey: "WeeksId", as: "weeks"});
   //   Todays.belongsToMany(models.Months, {through: "Months", foreignKey: "MonthsId", as: "months"}),
   //   Todays.belongsToMany(models.Journals, {through: "Journals", foreignKey: "JournalsId", as: "journals"}),
   //   Todays.belongsToMany(models.Trackers, {through: "Trackers", foreignKey: "TrackersId", as: "trackers"})
-  // };
+  };
   return Todays;
 };
