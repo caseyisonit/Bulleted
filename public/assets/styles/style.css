@@ -8,7 +8,7 @@ body {
 }
 
 .wrapper {
-  min-height: calc(100vh - 370px);
+  min-height: calc(100vh - 300px);
 }
 
 nav ul a,
@@ -54,7 +54,7 @@ p {
 }
 
 .sidenav-trigger {
-  color: #26a69a;
+  color: #ffc107;
 }
 
 .parallax-container {
@@ -140,7 +140,7 @@ ul {
 }
 
 /* Style the list items */
-ul#myUL li {
+ul.myUL li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
@@ -156,24 +156,24 @@ ul#myUL li {
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
-ul#myUL li:nth-child(odd) {
+ul.myUL li:nth-child(odd) {
   background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
-ul#myUL li:hover {
+ul.myUL li:hover {
   background: #ddd;
 }
 
 /* When clicked on, add a background color and strike out text */
-ul#myUL li.checked {
+ul.myUL li.checked {
   background: #ffc107;
   color: #fff;
   text-decoration: line-through;
 }
 
 /* Add a "checked" mark when clicked on */
-ul#myUL li.checked::before {
+ul.myUL li.checked::before {
   content: '';
   position: absolute;
   border-color: #fff;
@@ -228,5 +228,5 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
 }
 
 #goToUserPage {
-  margin-top: 30px auto;
+  margin-top: 30px;
 }

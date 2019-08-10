@@ -4,29 +4,34 @@
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
-                    {{!-- User.fName doesn't work --}}
-                    <h1 class="center">{{User.fName}} Dashboard</h1> 
-                    <a href="/logout" class="btn-large waves-effect waves-light grey darken-4">Logout</a>
+                    <h1 class="center">Dashboard</h1>
                 </div>
                 <div class="col s12 m4 l2"></div>
             </div>
         </div>
 
-    <div class="section">
-        <div class="row center">
-            <div class="col s12 m4 l2"></div>
-            <div class="col s12 m4 l8">
-                <div class="card white">
-                    <div class="card-content gray-text text-darken-4">
-                        <span class="card-title center">Today</span>
-                        <div class="divider"></div>
-                        <ul id = "myUL">
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <input type="text" id="myInput" placeholder="To-Do Item">
-                        <span onclick="newElement()" class="btn-small waves-effect waves-light grey darken-4"
-                            id="addbtn">Add</span>
+        <div class="section">
+            <div class="row center">
+                <div class="col s12 m4 l2"></div>
+                <div class="col s12 m4 l8">
+                    <div class="card white">
+                        <div class="card-content gray-text text-darken-4">
+                            <span class="card-title center">Today</span>
+                            <div class="divider"></div>
+                            <ul class="myUL" id="myUL1">
+                                <li>Hit the gym</li>
+                                <li class="checked">Pay bills</li>
+                                <li>Meet George</li>
+                                <li>Buy eggs</li>
+                                <li>Read a book</li>
+                                <li>Organize office</li>
+                            </ul>
+                        </div>
+                        <div class="card-action">
+                            <input type="text" id="myInput1" placeholder="To-Do Item">
+                            <span onclick="newElement1()" class="btn-small waves-effect waves-light grey darken-4"
+                                id="addbtn">Add</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col s12 m4 l2"></div>
@@ -41,7 +46,7 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">This Week</span>
                             <div class="divider"></div>
-                            <ul class="myUL" id="myUL">
+                            <ul class="myUL" id="myUL2">
                                 <li>Hit the gym</li>
                                 <li class="checked">Pay bills</li>
                                 <li>Meet George</li>
@@ -51,8 +56,8 @@
                             </ul>
                         </div>
                         <div class="card-action">
-                            <input type="text" id="myInput" placeholder="To-Do Item">
-                            <span onclick="newElement()" class="btn-small waves-effect waves-light grey darken-4"
+                            <input type="text" id="myInput2" placeholder="To-Do Item">
+                            <span onclick="newElement2()" class="btn-small waves-effect waves-light grey darken-4"
                                 id="addbtn">Add</span>
                         </div>
                     </div>
@@ -69,7 +74,7 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center div">This Month</span>
                             <div class="divider"></div>
-                            <ul class="myUL" id="myUL">
+                            <ul class="myUL" id="myUL3">
                                 <li>Hit the gym</li>
                                 <li class="checked">Pay bills</li>
                                 <li>Meet George</li>
@@ -79,8 +84,8 @@
                             </ul>
                         </div>
                         <div class="card-action">
-                            <input type="text" id="myInput" placeholder="To-Do Item">
-                            <span onclick="newElement()" class="btn-small waves-effect waves-light grey darken-4"
+                            <input type="text" id="myInput3" placeholder="To-Do Item">
+                            <span onclick="newElement3()" class="btn-small waves-effect waves-light grey darken-4"
                                 id="addbtn">Add</span>
                         </div>
                     </div>
@@ -97,7 +102,7 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center div">Journals</span>
                             <div class="divider"></div>
-                            <div class="journal-entries" style="text-align: left">
+                            <div id="journal-entries" style="text-align: left">
                                 <p>Here lies Murphy Brown. He was a swell guy who liked to dance and spit in bottles. He
                                     had a dog named Jack and a cow name MOOlisa. Not much of a looker but that don't
                                     matter cause he's got a silver tongue.
@@ -110,7 +115,7 @@
                                     <div class="input-field col s12">
                                         <textarea id="textarea1" class="materialize-textarea"></textarea>
                                         <label for="textarea1">Share your thoughts</label>
-                                        <span onclick="newElement()"
+                                        <span onclick="newElement4()"
                                             class="btn-small waves-effect waves-light grey darken-4"
                                             id="addbtn">Add</span>
                                     </div>
