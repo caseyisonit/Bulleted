@@ -1,28 +1,17 @@
-<<<<<<< HEAD
-<div class="container">
-    <div class="section">
-        <div class="row center">
-            <div class="col s12 m4 l2"></div>
-            <div class="col s12 m4 l8">
-                {{!-- this isn't displaying first name?? --}}
-                <h1 class="center">{{user.firstName}} Bullet Journal</h1>
-                <a href="/logout" class="btn-large waves-effect waves-light grey darken-4">Logout</a>
-=======
 <div class="wrapper">
     <div class="container">
         <div class="section">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
-                    <h1 class="center">{{user.firstName}} Dashboard</h1>
+                    {{!-- User.fName doesn't work --}}
+                    <h1 class="center">{{User.fName}} Dashboard</h1> 
                     <a href="/logout" class="btn-large waves-effect waves-light grey darken-4">Logout</a>
                 </div>
                 <div class="col s12 m4 l2"></div>
->>>>>>> master
             </div>
         </div>
 
-<<<<<<< HEAD
     <div class="section">
         <div class="row center">
             <div class="col s12 m4 l2"></div>
@@ -32,38 +21,12 @@
                         <span class="card-title center">Today</span>
                         <div class="divider"></div>
                         <ul id = "myUL">
-                            {{#each }}
-                            {{/each}}
                         </ul>
                     </div>
                     <div class="card-action">
                         <input type="text" id="myInput" placeholder="To-Do Item">
                         <span onclick="newElement()" class="btn-small waves-effect waves-light grey darken-4"
                             id="addbtn">Add</span>
-=======
-        <div class="section">
-            <div class="row center">
-                <div class="col s12 m4 l2"></div>
-                <div class="col s12 m4 l8">
-                    <div class="card white">
-                        <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center">Today</span>
-                            <div class="divider"></div>
-                            <ul class="myUL" id="myUL">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
-                            </ul>
-                        </div>
-                        <div class="card-action">
-                            <input type="text" id="myInput" placeholder="To-Do Item">
-                            <span onclick="newElement()" class="btn-small waves-effect waves-light grey darken-4"
-                                id="addbtn">Add</span>
-                        </div>
->>>>>>> master
                     </div>
                 </div>
                 <div class="col s12 m4 l2"></div>
@@ -126,24 +89,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-    <div class="section">
-        <div class="row center">
-            <div class="col s12 m4 l2"></div>
-            <div class="col s12 m4 l8">
-                <div class="card white">
-                    <div class="card-content gray-text text-darken-4">
-                        <span class="card-title center div">Journals</span>
-                        <div class="divider"></div>
-                        <ul id="myUL">
-                            <p>YOUR JOURNAL ENTRIES WOULD GO HERE</p>>
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <input type="text" id="myInput" placeholder="Journal Entry">
-                        <span onclick="newElement()" class="btn-small waves-effect waves-light grey darken-4"
-                            id="addbtn">Add</span>
-=======
         <div class="section">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
@@ -160,7 +105,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <form class="col s12">
+                            <form class="col s12" action = "/api/journals" method = "post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <textarea id="textarea1" class="materialize-textarea"></textarea>
@@ -172,7 +117,6 @@
                                 </div>
                             </form>
                         </div>
->>>>>>> master
                     </div>
                 </div>
                 <div class="col s12 m4 l2"></div>

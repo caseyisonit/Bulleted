@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "Months",
         foreignKey: "MonthsId",
         as: "months"
-      }),
+      });
       Journals.belongsToMany(models.Todays, {
         through: "Todays",
         foreignKey: "TodaysId",

@@ -2,30 +2,24 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function (app) {
-
-        app.get("/api/todos", function (req, res) {
+//journal getting things
+        app.get("/api/journals", function (req, res) {
             db.Journal.findAll({}).then(function (dbJournal) {
                 res.json(dbJournal);
             });
 
         });
-        app.post("/api/todos", function (req, res) {
-            db.Journal.create({
-                text: req.body.text,
-                complete: req.body.complete
-            }).then(function (dbJournal) {
-                res.json(dbJournal);
-            });
+        app.post("/api/journals", function (req, res) {
+            console.log(req.body);
+            // db.Journal.create({
+            //     text: req.body.text,
+            //     complete: req.body.complete
+            // }).then(function (dbJournal) {
+            //     res.json(dbJournal);
+            // });
+            res.status(200);
 
     });
-    app.post("/api/todos", function (req, res) {
-        db.create({
-            text: req.body.text,
-            complete: req.body.complete
-        }).then(function (db) {
-            res.json(db);
-        });
-
         app.delete("/api/journals/:id", function (req, res) {
             db.Journal.destroy({
                     where: {
@@ -35,16 +29,7 @@ module.exports = function (app) {
                 .then(function (dbJournal) {
                     res.json(dbJournal);
                 });
-
-    app.delete("/api/journals/:id", function (req, res) {
-        db.destroy({
-                where: {
-                    id: req.params.id
-                }
             })
-            .then(function (db) {
-                res.json(db);
-            });
 
         app.put("/api/journals", function (req, res) {
             db.Journal.update({
@@ -60,19 +45,131 @@ module.exports = function (app) {
                 });
         });
 
-    app.put("/api/journals", function (req, res) {
-        db.update({
-                text: req.body.text,
-                complete: req.body.complete
-            }, {
-                where: {
-                    id: req.body.id
-                }
-            })
-            .then(function (db) {
-                res.json(db);
+        //todo Today list
+        app.get("/api/todays", function (req, res) {
+            db.Todays.findAll({}).then(function (dbTodays) {
+                res.json(dbTodays);
             });
+
+        });
+        app.post("/api/todays", function (req, res) {
+            console.log(req.body);
+            db.Todays.create({
+               todo: req.body.todo
+            }).then(function (dbTodays) {
+                res.json(dbTodays);
+            });
+            res.status(200);
+
     });
+        app.delete("/api/todays/:id", function (req, res) {
+            db.Todays.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(function (dbTodays) {
+                    res.json(dbTodays);
+                });
+            })
+
+        app.put("/api/todays", function (req, res) {
+            db.Todays.update({
+                   todo: req.body.todo
+                }, {
+                    where: {
+                        id: req.body.id
+                    }
+                })
+                .then(function (dbTodays) {
+                    res.json(dbTodays);
+                });
+        });
+
+        //todo Weeks List
+        app.get("/api/weeks", function (req, res) {
+            db.Weeks.findAll({}).then(function (dbWeeks) {
+                res.json(dbWeeks);
+            });
+
+        });
+        app.post("/api/todays", function (req, res) {
+            console.log(req.body);
+            db.Weeks.create({
+               todo: req.body.todo
+            }).then(function (dbWeeks) {
+                res.json(dbWeeks);
+            });
+            res.status(200);
+
+    });
+        app.delete("/api/todays/:id", function (req, res) {
+            db.Weeks.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(function (dbWeeks) {
+                    res.json(dbWeeks);
+                });
+            })
+
+        app.put("/api/todays", function (req, res) {
+            db.Weeks.update({
+                   todo: req.body.todo
+                }, {
+                    where: {
+                        id: req.body.id
+                    }
+                })
+                .then(function (dbWeeks) {
+                    res.json(dbWeeks);
+                });
+        });
+
+        //todo Months List
+        app.get("/api/months", function (req, res) {
+            db.Months.findAll({}).then(function (dbMonths) {
+                res.json(dbMonths);
+            });
+
+        });
+        app.post("/api/months", function (req, res) {
+            console.log(req.body);
+            db.Months.create({
+               todo: req.body.todo
+            }).then(function (dbMonths) {
+                res.json(dbMonths);
+            });
+            res.status(200);
+
+    });
+        app.delete("/api/months/:id", function (req, res) {
+            db.Months.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(function (dbMonths) {
+                    res.json(dbMonths);
+                });
+            })
+
+        app.put("/api/months", function (req, res) {
+            db.Months.update({
+                   todo: req.body.todo
+                }, {
+                    where: {
+                        id: req.body.id
+                    }
+                })
+                .then(function (dbMonths) {
+                    res.json(dbMonths);
+                });
+        });
+
+
+
 
     // Using the passport.authenticate middleware with our local strategy.  If the user has valid login credentials, send them to the members page, otherwise the user will be sent an error
     app.post("/api/login", passport.authenticate("local"), function (req, res) {
@@ -183,6 +280,5 @@ module.exports = function (app) {
                 };
                 return res.render("index", hbsObject)
             })
-    })
-
+    });
 };
