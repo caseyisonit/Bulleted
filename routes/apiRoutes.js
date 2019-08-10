@@ -3,10 +3,19 @@ var passport = require("../config/passport");
 
 module.exports = function (app) {
 
-    app.get("/api/todos", function (req, res) {
-        db.findAll({}).then(function (results) {
-            res.json(results);
+        app.get("/api/todos", function (req, res) {
+            db.Journal.findAll({}).then(function (dbJournal) {
+                res.json(dbJournal);
+            });
+
         });
+        app.post("/api/todos", function (req, res) {
+            db.Journal.create({
+                text: req.body.text,
+                complete: req.body.complete
+            }).then(function (dbJournal) {
+                res.json(dbJournal);
+            });
 
     });
     app.post("/api/todos", function (req, res) {
@@ -17,7 +26,15 @@ module.exports = function (app) {
             res.json(db);
         });
 
-    });
+        app.delete("/api/journals/:id", function (req, res) {
+            db.Journal.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(function (dbJournal) {
+                    res.json(dbJournal);
+                });
 
     app.delete("/api/journals/:id", function (req, res) {
         db.destroy({
@@ -29,7 +46,19 @@ module.exports = function (app) {
                 res.json(db);
             });
 
-    });
+        app.put("/api/journals", function (req, res) {
+            db.Journal.update({
+                    text: req.body.text,
+                    complete: req.body.complete
+                }, {
+                    where: {
+                        id: req.body.id
+                    }
+                })
+                .then(function (dbJournal) {
+                    res.json(dbJournal);
+                });
+        });
 
     app.put("/api/journals", function (req, res) {
         db.update({
