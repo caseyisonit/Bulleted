@@ -12,11 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
     updatedAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {});
   Todays.associate = function(models) {

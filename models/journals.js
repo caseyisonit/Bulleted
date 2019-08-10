@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     createdAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
     updatedAt: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
   }, {});
   Journals.associate = function (models) {
@@ -26,21 +28,21 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "UserId",
       as: "user"
     });
-    Journals.belongsToMany(models.Weeks, {
-      through: "Weeks",
-      foreignKey: "WeeksId",
-      as: "weeks"
-    });
-    Journals.belongsToMany(models.Months, {
-        through: "Months",
-        foreignKey: "MonthsId",
-        as: "months"
-      });
-      Journals.belongsToMany(models.Todays, {
-        through: "Todays",
-        foreignKey: "TodaysId",
-        as: "todays"
-      })
+    // Journals.belongsToMany(models.Weeks, {
+    //   through: "Weeks",
+    //   foreignKey: "WeeksId",
+    //   as: "weeks"
+    // });
+    // Journals.belongsToMany(models.Months, {
+    //     through: "Months",
+    //     foreignKey: "MonthsId",
+    //     as: "months"
+    //   });
+    //   Journals.belongsToMany(models.Todays, {
+    //     through: "Todays",
+    //     foreignKey: "TodaysId",
+    //     as: "todays"
+    //   })
   };
   return Journals;
 };

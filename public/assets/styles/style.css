@@ -186,6 +186,13 @@ ul.myUL li.checked::before {
   width: 7px;
 }
 
+ul.myUL li.completed,
+ul.myUL li.completed:nth-child(odd) {
+   /* insert your magical styling here */
+   background-color: papayawhip;
+   text-decoration: line-through;
+}
+
 /* Style the close button */
 .close {
   position: absolute;

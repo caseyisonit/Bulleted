@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section sectionForm" id="todaysForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -19,18 +19,19 @@
                             <span class="card-title center">Today</span>
                             <div class="divider"></div>
                             <ul class="myUL" id="myUL1">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
+                                {{#each todays}}
+                                    {{#if completed}}
+                                        <li class="completed" id = {{id}}>{{todo}}</li>
+                                    {{else}}
+                                        <li id = {{id}}>{{todo}}</li>
+                                    {{/if}}
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
-                            <input type="text" id="myInput1" placeholder="To-Do Item">
-                            <span onclick="newElement1()" class="btn-small waves-effect waves-light grey darken-4"
-                                id="addbtn">Add</span>
+                            <input type="text" class="todo" placeholder="To-Do Item">
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4"
+                                >Add</span>
                         </div>
                     </div>
                 </div>
@@ -38,7 +39,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section sectionForm" id="weeksForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -56,9 +57,9 @@
                             </ul>
                         </div>
                         <div class="card-action">
-                            <input type="text" id="myInput2" placeholder="To-Do Item">
-                            <span onclick="newElement2()" class="btn-small waves-effect waves-light grey darken-4"
-                                id="addbtn">Add</span>
+                            <input type="text" class="todo" placeholder="To-Do Item">
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4"
+                                >Add</span>
                         </div>
                     </div>
                 </div>
@@ -66,7 +67,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section sectionForm" id="monthsForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -84,9 +85,9 @@
                             </ul>
                         </div>
                         <div class="card-action">
-                            <input type="text" id="myInput3" placeholder="To-Do Item">
-                            <span onclick="newElement3()" class="btn-small waves-effect waves-light grey darken-4"
-                                id="addbtn">Add</span>
+                            <input type="text" class="todo" placeholder="To-Do Item">
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4"
+                                >Add</span>
                         </div>
                     </div>
                 </div>
@@ -110,7 +111,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <form class="col s12" action = "/api/journals" method = "post">
+                            <form class="col s12" action="/api/journals" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <textarea id="textarea1" class="materialize-textarea"></textarea>
