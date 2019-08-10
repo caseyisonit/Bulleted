@@ -74,12 +74,13 @@ module.exports = function (app) {
                 });
             })
 
-        app.put("/api/todays", function (req, res) {
+        app.put("/api/todays/:id", function (req, res) {
+            var completed = req.body.completed === "true"; // true or false
             db.Todays.update({
-                   todo: req.body.todo
+                   completed: completed
                 }, {
                     where: {
-                        id: req.body.id
+                        id: req.params.id
                     }
                 })
                 .then(function (dbTodays) {
@@ -94,7 +95,7 @@ module.exports = function (app) {
             });
 
         });
-        app.post("/api/todays", function (req, res) {
+        app.post("/api/weeks", function (req, res) {
             console.log(req.body);
             db.Weeks.create({
                todo: req.body.todo
@@ -104,7 +105,7 @@ module.exports = function (app) {
             res.status(200);
 
     });
-        app.delete("/api/todays/:id", function (req, res) {
+        app.delete("/api/weeks/:id", function (req, res) {
             db.Weeks.destroy({
                     where: {
                         id: req.params.id
@@ -115,7 +116,7 @@ module.exports = function (app) {
                 });
             })
 
-        app.put("/api/todays", function (req, res) {
+        app.put("/api/weeks", function (req, res) {
             db.Weeks.update({
                    todo: req.body.todo
                 }, {
