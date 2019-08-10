@@ -1,18 +1,16 @@
-var dbJournal = require("../models");
 var db = require("../models");
-var Users = db.Users;
 var passport = require("../config/passport");
 
 module.exports = function (app) {
 
         app.get("/api/todos", function (req, res) {
-            dbJournal.findAll({}).then(function (dbJournal) {
+            db.Journal.findAll({}).then(function (dbJournal) {
                 res.json(dbJournal);
             });
 
         });
         app.post("/api/todos", function (req, res) {
-            dbJournal.create({
+            db.Journal.create({
                 text: req.body.text,
                 complete: req.body.complete
             }).then(function (dbJournal) {
@@ -22,7 +20,7 @@ module.exports = function (app) {
         });
 
         app.delete("/api/journals/:id", function (req, res) {
-            dbJournal.destroy({
+            db.Journal.destroy({
                     where: {
                         id: req.params.id
                     }
@@ -34,7 +32,7 @@ module.exports = function (app) {
         });
 
         app.put("/api/journals", function (req, res) {
-            dbJournal.update({
+            db.Journal.update({
                     text: req.body.text,
                     complete: req.body.complete
                 }, {
@@ -89,7 +87,8 @@ module.exports = function (app) {
                     console.log(dbUser);
                           // redirect
                           req.flash("success_message", "You are now signed up and can log in");
-                          res.redirect("/login");
+
+                          res.status(201).redirect("/login/?user=" + dbUser.email);
                     }).catch(function (err) {
                         console.log(err);
                         res.render("signup");

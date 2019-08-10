@@ -25,7 +25,12 @@ module.exports = function(app) {
         if (req.user) {
             res.redirect("/members");
         } else {
-        res.render("login");
+            if (req.query.user) {
+                res.render("login", {message: "You are successfully signed up! Please log in to continue"});
+            }else {
+
+                 res.render("login");
+            }
     }
     });
 
