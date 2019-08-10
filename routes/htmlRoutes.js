@@ -46,4 +46,9 @@ module.exports = function(app) {
             res.render("index", {loggedIn: false, loggedOut:true});
         }
     });
+
+    app.get("/user", function(req, res) {
+        res.render("dashboard");
+    });
+
 };

@@ -19,6 +19,14 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        fName: {
+            type: DataTypes.STRING,
+            allowNull:false
+        },
+        lname: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 
@@ -33,5 +41,11 @@ module.exports = function(sequelize, DataTypes) {
             user.password, bcrypt.genSaltSync(10), null
         );
     });
+    User.associate = function(models){
+        User.hasMany(models.Journals, {as: "journals"}),
+        User.hasMany(models.Todays, {as: "todays"}),
+        User.hasMany(models.Weeks, {as: "weeks"}),
+        User.hasMany(models.Months, {as: "months"})
+    }
     return User;
 };
