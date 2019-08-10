@@ -98,7 +98,8 @@ module.exports = function (app) {
         app.post("/api/weeks", function (req, res) {
             console.log(req.body);
             db.Weeks.create({
-               todo: req.body.todo
+               todo: req.body.todo,
+               UserId: req.user.id
             }).then(function (dbWeeks) {
                 res.json(dbWeeks);
             });
@@ -116,7 +117,7 @@ module.exports = function (app) {
                 });
             })
 
-        app.put("/api/weeks", function (req, res) {
+        app.put("/api/weeks/:id", function (req, res) {
             db.Weeks.update({
                    todo: req.body.todo
                 }, {
@@ -139,7 +140,8 @@ module.exports = function (app) {
         app.post("/api/months", function (req, res) {
             console.log(req.body);
             db.Months.create({
-               todo: req.body.todo
+               todo: req.body.todo,
+               UserId: req.user.id
             }).then(function (dbMonths) {
                 res.json(dbMonths);
             });
@@ -157,7 +159,7 @@ module.exports = function (app) {
                 });
             })
 
-        app.put("/api/months", function (req, res) {
+        app.put("/api/months/:id", function (req, res) {
             db.Months.update({
                    todo: req.body.todo
                 }, {
@@ -268,6 +270,8 @@ module.exports = function (app) {
     });
 
     app.get("/members", function (req, res) {
+        console.log("in app.get members");
+        
         db.User.findOne({
             where: {
                 id: req.user.id
@@ -275,11 +279,12 @@ module.exports = function (app) {
             include: [db.Journals, db.Todays, db.Weeks, db.Months]
         })
             .then(function (membersPage) {
-                console.log(membersPage, "MEMBERS PAGE")
+                console.log("-------------!!!!!!!!!!!!MEMBERS PAGE!!!!!!!!!!!!!!!!!!---------------")
                 var hbsObject = {
                     journal: membersPage.journal,
                     todo: dbTodo
                 };
+                console.log("FLAGGING", hbsObject);
                 return res.render("index", hbsObject)
             })
     });

@@ -22,8 +22,10 @@
                                 {{#each todays}}
                                     {{#if completed}}
                                         <li class="completed" id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
                                     {{else}}
                                         <li id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
                                     {{/if}}
                                 {{/each}}
                             </ul>
@@ -48,12 +50,15 @@
                             <span class="card-title center">This Week</span>
                             <div class="divider"></div>
                             <ul class="myUL" id="myUL2">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
+                                {{#each weeks}}
+                                    {{#if completed}}
+                                        <li class="completed" id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{else}}
+                                        <li id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{/if}}
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
@@ -76,12 +81,15 @@
                             <span class="card-title center div">This Month</span>
                             <div class="divider"></div>
                             <ul class="myUL" id="myUL3">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
+                             {{#each months}}
+                                    {{#if completed}}
+                                        <li class="completed" id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{else}}
+                                        <li id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{/if}}
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">

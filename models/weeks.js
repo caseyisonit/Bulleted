@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {});
   Weeks.associate = function(models) {

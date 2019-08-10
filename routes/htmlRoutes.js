@@ -42,14 +42,36 @@ module.exports = function(app) {
     // Here we've added our isAuthenticated middleware to this route. If a user who is not logged in tries to access this route they will be redirected to the signup page
     app.get("/members", isAuthenticated, function(req, res) {
         if (req.user) {
-            db.Todays.findAll({
+            // db.Todays.findAll({
+            //     where: {
+            //         UserId: req.user.id
+            //     }
+            // }).then(function (dbTodays) {
+            //     console.log(dbTodays);
+                
+            //     res.render("dashboard", {loggedIn: true, loggedOut:false, todays: dbTodays});
+            // });
+            db.User.findOne({
                 where: {
-                    UserId: req.user.id
-                }
-            }).then(function (dbTodays) {
-                res.render("dashboard", {loggedIn: true, loggedOut:false, todays: dbTodays});
-            });
-
+                    id: req.user.id
+                },
+                include: [{model: db.Journals, as: "journals"}, {model: db.Todays, as: "todays"}, {model: db.Weeks, as: "weeks"}, {model: db.Months, as: "months"}]
+            })
+                .then(function (membersPage) {
+                    console.log("-------------!!!!!!!!!!!!MEMBERS PAGE!!!!!!!!!!!!!!!!!!---------------")
+                    console.log(membersPage);
+                    
+                    var hbsObject = {
+                        loggedIn: true, 
+                        loggedOut:false, 
+                        todays: membersPage.todays,
+                        weeks:membersPage.weeks,
+                        months:membersPage.months,
+                        journals:membersPage.journals
+                    };
+                    console.log("FLAGGING", hbsObject);
+                    return res.render("dashboard", hbsObject)
+                })
             
         } else {
             res.render("index", {loggedIn: false, loggedOut:true});

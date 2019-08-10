@@ -1,6 +1,6 @@
 $(".sectionForm .addbtn").on("click", function() {
   var todo = $(this).siblings(".todo").val().trim(); // get value of todo field
-
+  console.log(todo);
   // if no todo item is specified, throw alert message and break out
   if (!todo) {
       alert("You must write something!");
@@ -8,6 +8,7 @@ $(".sectionForm .addbtn").on("click", function() {
   }
 
   var section = $(this).closest(".sectionForm").attr("id"); // get id of "form"
+  console.log(section);
   var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
   var body = {
       todo,
@@ -24,6 +25,20 @@ $(".sectionForm .addbtn").on("click", function() {
   });
 });
 
+$(".deleteItem").on("click", function(){
+  var id = $(this).attr("id");
+  console.log("DLETE ITEM", id);
+  var section = $(this).closest(".sectionForm").attr("id");
+  var routePart = section.substring(0, section.length - 4);
+
+  $.ajax({
+    method: "DELETE",
+    url: `/api/${routePart}/${id}`
+}).then(function(response) {
+    location.reload();
+})
+})
+
 $(".sectionForm li").on("click", function() {
   var id = $(this).attr("id"); // num to delete
   var status = $(this).hasClass("completed"); // completed: true or false
@@ -39,6 +54,7 @@ $(".sectionForm li").on("click", function() {
       location.reload();
   })
 });
+
 
 // To-Do list
 // Create a "close" button and append it to each list item
