@@ -7,6 +7,10 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.wrapper {
+  min-height: calc(100vh - 370px);
+}
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -206,9 +210,13 @@ input {
   font-size: 16px;
 }
 
-input:focus {
+input:focus, textarea.materialize-textarea:focus:not([readonly]){
   border-bottom: 1px solid #ffc107 !important;
   box-shadow: 0 1px 0 0 #ffc107 !important;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label{
+  color: #ffc107 !important;
 }
 
 .card-action {
@@ -219,3 +227,6 @@ input:focus {
   margin-left: 20px;
 }
 
+#goToUserPage {
+  margin-top: 30px auto;
+}
