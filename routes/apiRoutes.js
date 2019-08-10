@@ -11,12 +11,11 @@ module.exports = function (app) {
         });
         app.post("/api/journals", function (req, res) {
             console.log(req.body);
-            // db.Journal.create({
-            //     text: req.body.text,
-            //     complete: req.body.complete
-            // }).then(function (dbJournal) {
-            //     res.json(dbJournal);
-            // });
+            db.Journal.create({
+                body: req.body.body
+            }).then(function (dbJournal) {
+                res.json(dbJournal);
+            });
             res.status(200);
 
     });
@@ -33,8 +32,7 @@ module.exports = function (app) {
 
         app.put("/api/journals", function (req, res) {
             db.Journal.update({
-                    text: req.body.text,
-                    complete: req.body.complete
+                body: req.body.body
                 }, {
                     where: {
                         id: req.body.id
@@ -238,15 +236,6 @@ module.exports = function (app) {
             });
         }
     });
-    // db.User.create({
-    //     email: req.body.email,
-    //     password: req.body.password
-    // }).then(function () {
-    //     res.redirect(307, "/api/login");
-    // }).catch(function (err) {
-    //     console.log(err);
-    //     res.render("signup");
-    // });
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
@@ -269,23 +258,23 @@ module.exports = function (app) {
         }
     });
 
-    app.get("/members", function (req, res) {
-        console.log("in app.get members");
+//     app.get("/members", function (req, res) {
+//         console.log("in app.get members");
         
-        db.User.findOne({
-            where: {
-                id: req.user.id
-            },
-            include: [db.Journals, db.Todays, db.Weeks, db.Months]
-        })
-            .then(function (membersPage) {
-                console.log("-------------!!!!!!!!!!!!MEMBERS PAGE!!!!!!!!!!!!!!!!!!---------------")
-                var hbsObject = {
-                    journal: membersPage.journal,
-                    todo: dbTodo
-                };
-                console.log("FLAGGING", hbsObject);
-                return res.render("index", hbsObject)
-            })
-    });
+//         db.User.findOne({
+//             where: {
+//                 id: req.user.id
+//             },
+//             include: [db.Journals, db.Todays, db.Weeks, db.Months]
+//         })
+//             .then(function (membersPage) {
+//                 console.log("-------------!!!!!!!!!!!!MEMBERS PAGE!!!!!!!!!!!!!!!!!!---------------")
+//                 var hbsObject = {
+//                     journal: membersPage.journal,
+//                     todo: dbTodo
+//                 };
+//                 console.log("FLAGGING", hbsObject);
+//                 return res.render("index", hbsObject)
+//             })
+//     });
 };

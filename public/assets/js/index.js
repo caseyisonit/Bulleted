@@ -55,6 +55,66 @@ $(".sectionForm li").on("click", function() {
   })
 });
 
+//JOURNALFORM
+
+
+
+$(".journalForm .addbtn").on("click", function() {
+  var journal = $(this).siblings(".journal").val().trim(); // get value of todo field
+  // if no journal item is specified, throw alert message and break out
+  if (!journal) {
+      alert("You must write something!");
+      return false;
+  }
+
+  var section = $(this).closest(".journalForm").attr("id"); // get id of "form"
+  console.log(section);
+  var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
+  var body = {
+      body,
+      createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+      updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
+  };
+
+  $.ajax({
+      method: "POST",
+      url: `/api/${routePart}`,
+      data: body
+  }).then(function(response) {
+      location.reload();
+  });
+});
+
+$(".deleteItem").on("click", function(){
+  var id = $(this).attr("id");
+  console.log("DLETE ITEM", id);
+  var section = $(this).closest(".journalForm").attr("id");
+  var routePart = section.substring(0, section.length - 4);
+
+  $.ajax({
+    method: "DELETE",
+    url: `/api/${routePart}/${id}`
+}).then(function(response) {
+    location.reload();
+})
+})
+
+$(".journalForm p").on("click", function() {
+  var id = $(this).attr("id"); // num to delete
+  var status = $(this).hasClass("completed"); // completed: true or false
+  var section = $(this).closest(".journalForm").attr("id"); // get id of "form"
+  var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
+
+
+  $.ajax({
+      method: "PUT",
+      url: `/api/${routePart}/${id}`,
+      data: { completed: !status }
+  }).then(function(response) {
+      location.reload();
+  })
+});
+
 
 // To-Do list
 // Create a "close" button and append it to each list item

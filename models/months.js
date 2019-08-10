@@ -19,14 +19,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
+
   }, {});
   Months.associate = function(models) {
     Months.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
-//     Months.belongsToMany(models.Weeks, {through: "Weeks", foreignKey: "WeeksId", as: "weeks"});
-//     Months.belongsToMany(models.Todays, {through: "Todays", foreignKey: "TodaysId", as: "todays"}),
-//     Months.belongsToMany(models.Journals, {through: "Journals", foreignKey: "JournalsId", as: "journals"}),
-//     Months.belongsToMany(models.Trackers, {through: "Trackers", foreignKey: "TrackersId", as: "trackers"})
   };
   return Months;
 };

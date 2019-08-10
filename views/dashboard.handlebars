@@ -103,7 +103,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section journalForm" id = "journalForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -112,17 +112,17 @@
                             <span class="card-title center div">Journals</span>
                             <div class="divider"></div>
                             <div id="journal-entries" style="text-align: left">
-                                <p>Here lies Murphy Brown. He was a swell guy who liked to dance and spit in bottles. He
-                                    had a dog named Jack and a cow name MOOlisa. Not much of a looker but that don't
-                                    matter cause he's got a silver tongue.
-                                </p>
+                                {{#each journals}}
+                                        <p class="entry" id = {{id}}>{{body}}</p>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                {{/each}}
                             </div>
                         </div>
                         <div class="card-action">
                             <form class="col s12" action="/api/journals" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                        <textarea id="textarea1" class="materialize-textarea journal"></textarea>
                                         <label for="textarea1">Share your thoughts</label>
                                         <span onclick="newElement4()"
                                             class="btn-small waves-effect waves-light grey darken-4"
