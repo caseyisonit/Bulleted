@@ -1,7 +1,5 @@
 var express = require("express");
 var db = require("../models");
-// var path = require("path");
-// var router = express.Router();
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 

@@ -103,7 +103,7 @@
             </div>
         </div>
 
-        <div class="section journalForm" id = "journalForm">
+        <div class="section journalForm" id = "journalsForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -119,14 +119,13 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <form class="col s12" action="/api/journals" method="post">
+                            <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <textarea id="textarea1" class="materialize-textarea journal"></textarea>
                                         <label for="textarea1">Share your thoughts</label>
-                                        <span onclick="newElement4()"
-                                            class="btn-small waves-effect waves-light grey darken-4"
-                                            id="addbtn">Add</span>
+                                        <span
+                                            class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
                                     </div>
                                 </div>
                             </form>
