@@ -8,7 +8,11 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-        res.render("index");
+        if (req.user) {
+            res.render("index", {loggedIn: true, loggedOut:false});
+        } else {
+            res.render("index", {loggedIn: false, loggedOut:true});
+        }
       });
 
     app.get("/signup", function(req, res) {
@@ -25,12 +29,21 @@ module.exports = function(app) {
         if (req.user) {
             res.redirect("/members");
         } else {
-        res.render("login");
+            if (req.query.user) {
+                res.render("login", {message: "You are successfully signed up! Please log in to continue"});
+            }else {
+
+                 res.render("login");
+            }
     }
     });
 
     // Here we've added our isAuthenticated middleware to this route. If a user who is not logged in tries to access this route they will be redirected to the signup page
     app.get("/members", isAuthenticated, function(req, res) {
-        res.render("dashboard");
+        if (req.user) {
+            res.render("dashboard", {loggedIn: true, loggedOut:false});
+        } else {
+            res.render("index", {loggedIn: false, loggedOut:true});
+        }
     });
 };
