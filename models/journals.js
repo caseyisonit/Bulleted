@@ -26,21 +26,21 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "UserId",
       as: "user"
     });
-    Journals.belongsToMany(models.Weeks, {
-      through: "Weeks",
-      foreignKey: "WeeksId",
-      as: "weeks"
-    });
-    Journals.belongsToMany(models.Months, {
-        through: "Months",
-        foreignKey: "MonthsId",
-        as: "months"
-      });
-      Journals.belongsToMany(models.Todays, {
-        through: "Todays",
-        foreignKey: "TodaysId",
-        as: "todays"
-      })
+    // Journals.belongsToMany(models.Weeks, {
+    //   through: "Weeks",
+    //   foreignKey: "WeeksId",
+    //   as: "weeks"
+    // });
+    // Journals.belongsToMany(models.Months, {
+    //     through: "Months",
+    //     foreignKey: "MonthsId",
+    //     as: "months"
+    //   });
+    //   Journals.belongsToMany(models.Todays, {
+    //     through: "Todays",
+    //     foreignKey: "TodaysId",
+    //     as: "todays"
+    //   })
   };
   return Journals;
 };

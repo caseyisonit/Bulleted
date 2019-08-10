@@ -19,12 +19,9 @@
                             <span class="card-title center">Today</span>
                             <div class="divider"></div>
                             <ul class="myUL" id="myUL1">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
+                                {{#each todays}}
+                                <li>{{todo}}</li>
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
@@ -110,7 +107,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <form class="col s12" action = "/api/journals" method = "post">
+                            <form class="col s12" action="/api/journals" method="post">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <textarea id="textarea1" class="materialize-textarea"></textarea>

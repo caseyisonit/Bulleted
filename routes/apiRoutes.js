@@ -55,7 +55,8 @@ module.exports = function (app) {
         app.post("/api/todays", function (req, res) {
             console.log(req.body);
             db.Todays.create({
-               todo: req.body.todo
+               todo: req.body.todo,
+               UserId: req.user.id
             }).then(function (dbTodays) {
                 res.json(dbTodays);
             });
