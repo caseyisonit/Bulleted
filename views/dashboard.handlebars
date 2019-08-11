@@ -18,22 +18,25 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">Today</span>
                             <div class="divider"></div>
-                            <ul class="myUL" id="myUL1">
+                            <ul class="myUL">
                                 {{#each todays}}
-                                    {{#if completed}}
-                                        <li class="completed" id = {{id}}>{{todo}}</li>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
-                                    {{else}}
-                                        <li id = {{id}}>{{todo}}</li>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                {{#if completed}}
+                                <span class="todo">
+                                    <li class="completed" id={{id}}>{{todo}}
+                                    <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
+                                {{else}}
+                                <span class="todo">
+                                    <li id={{id}}>{{todo}}
+                                    <span class="deleteItem" id={{id}}>X</span></li>
+                                    </span>
                                     {{/if}}
-                                {{/each}}
+                                    {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
                             <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4"
-                                >Add</span>
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
                         </div>
                     </div>
                 </div>
@@ -49,22 +52,25 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">This Week</span>
                             <div class="divider"></div>
-                            <ul class="myUL" id="myUL2">
+                            <ul class="myUL">
                                 {{#each weeks}}
-                                    {{#if completed}}
-                                        <li class="completed" id = {{id}}>{{todo}}</li>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
-                                    {{else}}
-                                        <li id = {{id}}>{{todo}}</li>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
-                                    {{/if}}
+                                {{#if completed}}
+                                <span class="todo">
+                                    <li class="completed" id={{id}}>{{todo}}
+                                    <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
+                                {{else}}
+                                <span class="todo">
+                                    <li id={{id}}>{{todo}}
+                                    <span class="deleteItem" id={{id}}>X</s></li>
+                                </span>
+                                {{/if}}
                                 {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
                             <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4"
-                                >Add</span>
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
                         </div>
                     </div>
                 </div>
@@ -80,22 +86,21 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center div">This Month</span>
                             <div class="divider"></div>
-                            <ul class="myUL" id="myUL3">
-                             {{#each months}}
-                                    {{#if completed}}
-                                        <li class="completed" id = {{id}}>{{todo}}</li>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
-                                    {{else}}
-                                        <li id = {{id}}>{{todo}}</li>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
-                                    {{/if}}
+                            <ul class="myUL">
+                                {{#each months}}
+                                {{#if completed}}
+                                <li class="completed" id={{id}}>{{todo}}
+                                <span class="deleteItem" id={{id}}>X</span></li>
+                                {{else}}
+                                <li id={{id}}>{{todo}}
+                                <span class="deleteItem" id={{id}}>X</span></li>
+                                {{/if}}
                                 {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
                             <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4"
-                                >Add</span>
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
                         </div>
                     </div>
                 </div>
@@ -103,7 +108,7 @@
             </div>
         </div>
 
-        <div class="section journalForm" id = "journalsForm">
+        <div class="section journalForm" id="journalsForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -111,10 +116,13 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center div">Journals</span>
                             <div class="divider"></div>
-                            <div id="journal-entries" style="text-align: left">
+                            <div id="journal-entries">
                                 {{#each journals}}
-                                        <p class="entry" id = {{id}}>{{body}}</p>
-                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                <div>
+                                <h6 "journal-title">{{createdAt}} <span class="deleteItem" id={{id}}>X</span></h6>
+                                <p class="entry" id={{id}}>{{body}} </p>
+                                <div class="divider" id="journal-divider"></div>
+                                </div>  
                                 {{/each}}
                             </div>
                         </div>
@@ -124,8 +132,7 @@
                                     <div class="input-field col s12">
                                         <textarea id="textarea1" class="materialize-textarea journal"></textarea>
                                         <label for="textarea1">Share your thoughts</label>
-                                        <span
-                                            class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
+                                        <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
                                     </div>
                                 </div>
                             </form>
