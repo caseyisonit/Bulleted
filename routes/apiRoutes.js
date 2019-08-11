@@ -2,26 +2,26 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function (app) {
-//journal getting things
+        //journal getting things
         app.get("/api/journals", function (req, res) {
-            db.Journal.findAll({}).then(function (dbJournal) {
+            db.Journals.findAll({}).then(function (dbJournal) {
                 res.json(dbJournal);
             });
 
         });
         app.post("/api/journals", function (req, res) {
             console.log(req.body);
-            // db.Journal.create({
-            //     text: req.body.text,
-            //     complete: req.body.complete
-            // }).then(function (dbJournal) {
-            //     res.json(dbJournal);
-            // });
+            db.Journals.create({
+                body: req.body.body,
+                UserId: req.user.id
+            }).then(function (dbJournal) {
+                res.json(dbJournal);
+            });
             res.status(200);
 
     });
         app.delete("/api/journals/:id", function (req, res) {
-            db.Journal.destroy({
+            db.Journals.destroy({
                     where: {
                         id: req.params.id
                     }
@@ -32,9 +32,8 @@ module.exports = function (app) {
             })
 
         app.put("/api/journals", function (req, res) {
-            db.Journal.update({
-                    text: req.body.text,
-                    complete: req.body.complete
+            db.Journals.update({
+                body: req.body.body
                 }, {
                     where: {
                         id: req.body.id
@@ -98,7 +97,8 @@ module.exports = function (app) {
         app.post("/api/weeks", function (req, res) {
             console.log(req.body);
             db.Weeks.create({
-               todo: req.body.todo
+               todo: req.body.todo,
+               UserId: req.user.id
             }).then(function (dbWeeks) {
                 res.json(dbWeeks);
             });
@@ -116,7 +116,7 @@ module.exports = function (app) {
                 });
             })
 
-        app.put("/api/weeks", function (req, res) {
+        app.put("/api/weeks/:id", function (req, res) {
             db.Weeks.update({
                    todo: req.body.todo
                 }, {
@@ -139,7 +139,8 @@ module.exports = function (app) {
         app.post("/api/months", function (req, res) {
             console.log(req.body);
             db.Months.create({
-               todo: req.body.todo
+               todo: req.body.todo,
+               UserId: req.user.id
             }).then(function (dbMonths) {
                 res.json(dbMonths);
             });
@@ -157,7 +158,7 @@ module.exports = function (app) {
                 });
             })
 
-        app.put("/api/months", function (req, res) {
+        app.put("/api/months/:id", function (req, res) {
             db.Months.update({
                    todo: req.body.todo
                 }, {
@@ -236,15 +237,6 @@ module.exports = function (app) {
             });
         }
     });
-    // db.User.create({
-    //     email: req.body.email,
-    //     password: req.body.password
-    // }).then(function () {
-    //     res.redirect(307, "/api/login");
-    // }).catch(function (err) {
-    //     console.log(err);
-    //     res.render("signup");
-    // });
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
@@ -265,22 +257,5 @@ module.exports = function (app) {
                 id: req.user.id
             });
         }
-    });
-
-    app.get("/members", function (req, res) {
-        db.User.findOne({
-            where: {
-                id: req.user.id
-            },
-            include: [db.Journals, db.Todays, db.Weeks, db.Months]
-        })
-            .then(function (membersPage) {
-                console.log(membersPage, "MEMBERS PAGE")
-                var hbsObject = {
-                    journal: membersPage.journal,
-                    todo: dbTodo
-                };
-                return res.render("index", hbsObject)
-            })
     });
 };

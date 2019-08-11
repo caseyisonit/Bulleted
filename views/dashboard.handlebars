@@ -22,8 +22,10 @@
                                 {{#each todays}}
                                     {{#if completed}}
                                         <li class="completed" id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
                                     {{else}}
                                         <li id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
                                     {{/if}}
                                 {{/each}}
                             </ul>
@@ -48,12 +50,15 @@
                             <span class="card-title center">This Week</span>
                             <div class="divider"></div>
                             <ul class="myUL" id="myUL2">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
+                                {{#each weeks}}
+                                    {{#if completed}}
+                                        <li class="completed" id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{else}}
+                                        <li id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{/if}}
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
@@ -76,12 +81,15 @@
                             <span class="card-title center div">This Month</span>
                             <div class="divider"></div>
                             <ul class="myUL" id="myUL3">
-                                <li>Hit the gym</li>
-                                <li class="checked">Pay bills</li>
-                                <li>Meet George</li>
-                                <li>Buy eggs</li>
-                                <li>Read a book</li>
-                                <li>Organize office</li>
+                             {{#each months}}
+                                    {{#if completed}}
+                                        <li class="completed" id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{else}}
+                                        <li id = {{id}}>{{todo}}</li>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                    {{/if}}
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
@@ -95,7 +103,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section journalForm" id = "journalsForm">
             <div class="row center">
                 <div class="col s12 m4 l2"></div>
                 <div class="col s12 m4 l8">
@@ -104,21 +112,20 @@
                             <span class="card-title center div">Journals</span>
                             <div class="divider"></div>
                             <div id="journal-entries" style="text-align: left">
-                                <p>Here lies Murphy Brown. He was a swell guy who liked to dance and spit in bottles. He
-                                    had a dog named Jack and a cow name MOOlisa. Not much of a looker but that don't
-                                    matter cause he's got a silver tongue.
-                                </p>
+                                {{#each journals}}
+                                        <p class="entry" id = {{id}}>{{body}}</p>
+                                         <button class = "deleteItem" id = {{id}}>X</button>
+                                {{/each}}
                             </div>
                         </div>
                         <div class="card-action">
-                            <form class="col s12" action="/api/journals" method="post">
+                            <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                        <textarea id="textarea1" class="materialize-textarea journal"></textarea>
                                         <label for="textarea1">Share your thoughts</label>
-                                        <span onclick="newElement4()"
-                                            class="btn-small waves-effect waves-light grey darken-4"
-                                            id="addbtn">Add</span>
+                                        <span
+                                            class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
                                     </div>
                                 </div>
                             </form>

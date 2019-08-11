@@ -1,46 +1,24 @@
-# Running commands
-## On a mac
-`NODE_ENV=mac-development nodemon server.js`
-## on a PC
-`nodemon server.js`
+Name
+Bulleted
+
+Description
+Bulleted is an online bullet journal meant to make the flexibility and customization of bullet journals more accesible in your day to day life.
 
 
+Visuals
+Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
+Usage
+You will presently be able to include a personal journal as well as daily, weekly and monthly todo lists
 
-## Welcome to GitHub Pages
+Roadmap
+For future releases we are looking to make the site even more customizable. Adding in functionalities for trackers (i.e period tracker, habit tracker). Weather API access
 
-You can use the [editor on GitHub](https://github.com/KCEliza/Project-Two/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KCEliza/Project-Two/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Authors and acknowledgment
+Throughout this project we had
+Casey Eickhoff-routing and styling
+Rachael Whitefield-  authorization and styling
+Carolyn Floyd- database and joins
+Kristen Christeson- routing and functionality
