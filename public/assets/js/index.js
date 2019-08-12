@@ -27,7 +27,6 @@ $(".sectionForm .addbtn").on("click", function () {
 
 $(".sectionForm:not(#journalsForm) .deleteItem").on("click", function () {
   var id = $(this).attr("id");
-  console.log("DLETE ITEM", id);
   var section = $(this).closest(".sectionForm").attr("id");
   var routePart = section.substring(0, section.length - 4);
 

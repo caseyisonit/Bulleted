@@ -34,10 +34,10 @@ module.exports = function (app) {
 
     app.put("/api/journals", function (req, res) {
         db.Journals.update({
-            body: req.body.body
+            body: req.params.body
         }, {
                 where: {
-                    id: req.body.id
+                    id: req.params.id
                 }
             })
             .then(function (dbJournal) {

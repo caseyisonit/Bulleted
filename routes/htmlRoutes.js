@@ -1,4 +1,3 @@
-var express = require("express");
 var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -56,10 +55,9 @@ module.exports = function(app) {
                         journals:membersPage.journals
                     };
                     return res.render("dashboard", hbsObject);
-                })
-            
+                });
         } else {
-            res.render("index", {loggedIn: false, loggedOut:true});
+            res.render("index", {loggedIn: false, loggedOut: true});
         }
     });
 
