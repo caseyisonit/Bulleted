@@ -176,6 +176,7 @@ ul.myUL li.completed {
   text-decoration: line-through;
 }
 
+
 /* Add a "checked" mark when clicked on */
 ul.myUL li.completed::before {
   content: '';

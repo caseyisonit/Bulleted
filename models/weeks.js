@@ -27,10 +27,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Weeks.associate = function(models) {
     Weeks.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
-//     Weeks.belongsToMany(models.Todays, {through: "Todays", foreignKey: "TodaysId", as: "todays"});
-//     Weeks.belongsToMany(models.Months, {through: "Months", foreignKey: "MonthsId", as: "months"}),
-//     Weeks.belongsToMany(models.Journals, {through: "Journals", foreignKey: "JournalsId", as: "journals"}),
-//     Weeks.belongsToMany(models.Trackers, {through: "Trackers", foreignKey: "TrackersId", as: "trackers"})
-  };
+ };
   return Weeks;
 };
