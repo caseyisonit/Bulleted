@@ -22,3 +22,6 @@ Casey Eickhoff-routing and styling
 Rachael Whitefield-  authorization and styling
 Carolyn Floyd- database and joins
 Kristen Christeson- routing and functionality
+
+
+TRYING TO CONNECT TO HEROKU
