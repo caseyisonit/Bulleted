@@ -85,7 +85,7 @@ $(".journalForm .addbtn").on("click", function () {
   });
 });
 
-$(".journalForm .deleteItem").on("click", function () {
+$(".journalForm .deleteJournal").on("click", function () {
   var id = $(this).attr("id");
   console.log("DLETE ITEM", id);
   var section = $(this).closest(".journalForm").attr("id");
@@ -98,6 +98,15 @@ $(".journalForm .deleteItem").on("click", function () {
       location.reload();
   });
 });
+
+var allTitles = $(".journal-title");
+console.log("all titles:", allTitles);
+
+for (var i = 0; i < allTitles.length; i++){
+    var titleText = $(allTitles[i]).text().split(" ").splice(0, 4).join(" ");
+    console.log("title text", titleText);
+    $(allTitles[i]).text(titleText);
+};
 
 // Click events
 $(function () {
