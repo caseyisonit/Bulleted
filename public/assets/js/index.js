@@ -38,18 +38,22 @@ $(".sectionForm:not(#journalsForm) .deleteItem").on("click", function () {
   });
 });
 
-$(".sectionForm .myUL li").on("click", function () {
+$(".sectionForm li").on("click", function () {
     var id = $(this).attr("id"); // id of todo to toggle
   var status = $(this).hasClass("completed"); // completed: true or false
   var section = $(this).closest(".sectionForm").attr("id"); // get id of "form"
   var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
-
+console.log("id", id);
+  console.log("section", section);
+console.log("routePart", routePart);
 
   $.ajax({
       method: "PUT",
       url: `/api/${routePart}/${id}`,
       data: { completed: !status }
   }).then(function (response) {
+    // console.log("response", response);
+
       location.reload();
   });
 });
@@ -81,7 +85,7 @@ $(".journalForm .addbtn").on("click", function () {
   });
 });
 
-$(".journalForm .deleteItem").on("click", function () {
+$(".journalForm .deleteJournal").on("click", function () {
   var id = $(this).attr("id");
   console.log("DLETE ITEM", id);
   var section = $(this).closest(".journalForm").attr("id");
@@ -94,6 +98,15 @@ $(".journalForm .deleteItem").on("click", function () {
       location.reload();
   });
 });
+
+var allTitles = $(".journal-title");
+console.log("all titles:", allTitles);
+
+for (var i = 0; i < allTitles.length; i++){
+    var titleText = $(allTitles[i]).text().split(" ").splice(0, 4).join(" ");
+    console.log("title text", titleText);
+    $(allTitles[i]).text(titleText);
+};
 
 // Click events
 $(function () {
