@@ -25,7 +25,7 @@ $(".sectionForm .addbtn").on("click", function () {
   });
 });
 
-$(".sectionForm:not(#journalForm) .deleteItem").on("click", function () {
+$(".sectionForm:not(#journalsForm) .deleteItem").on("click", function () {
   var id = $(this).attr("id");
   console.log("DLETE ITEM", id);
   var section = $(this).closest(".sectionForm").attr("id");
@@ -37,10 +37,10 @@ $(".sectionForm:not(#journalForm) .deleteItem").on("click", function () {
   }).then(function (response) {
       location.reload();
   });
-})
+});
 
-$(".sectionForm li").on("click", function () {
-  var id = $(this).attr("id"); // id of todo to toggle
+$(".sectionForm .myUL li").on("click", function () {
+    var id = $(this).attr("id"); // id of todo to toggle
   var status = $(this).hasClass("completed"); // completed: true or false
   var section = $(this).closest(".sectionForm").attr("id"); // get id of "form"
   var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
@@ -93,25 +93,25 @@ $(".journalForm .deleteItem").on("click", function () {
       url: `/api/${routePart}/${id}`
   }).then(function (response) {
       location.reload();
-  })
-})
-
-// SARAH WONDERS -- DO YOU REALLY NEED THIS? CAN YOU CHECK JOURNAL ENTRIES AS COMPLETED?!
-$(".journalForm p").on("click", function () {
-  var id = $(this).attr("id"); // // id of todo to toggle
-  var status = $(this).hasClass("completed"); // completed: true or false
-  var section = $(this).closest(".journalForm").attr("id"); // get id of "form"
-  var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
-
-
-  $.ajax({
-      method: "PUT",
-      url: `/api/${routePart}/${id}`,
-      data: { completed: !status }
-  }).then(function (response) {
-      location.reload();
   });
 });
+
+// SARAH WONDERS -- DO YOU REALLY NEED THIS? CAN YOU CHECK JOURNAL ENTRIES AS COMPLETED?!
+// $(".journalForm p").on("click", function () {
+//   var id = $(this).attr("id"); // // id of todo to toggle
+//   var status = $(this).hasClass("completed"); // completed: true or false
+//   var section = $(this).closest(".journalForm").attr("id"); // get id of "form"
+//   var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
+
+
+//   $.ajax({
+//       method: "PUT",
+//       url: `/api/${routePart}/${id}`,
+//       data: { completed: !status }
+//   }).then(function (response) {
+//       location.reload();
+//   });
+// });
 
 // Click events
 $(function () {
@@ -173,7 +173,7 @@ $(function () {
   //     document.getElementById("myUL1").appendChild(li);
   //   }
   //   document.getElementById("myInput1").value = "";
-  
+
   //   var span = document.createElement("SPAN");
 //   var txt = document.createTextNode("\u00D7");
 //   span.className = "close";
