@@ -18,7 +18,7 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">Today</span>
                             <div class="divider"></div>
-                            <ul class="myUL">
+                            <ul class="myUL" id="myUL1">
                                 {{#each todays}}
                                 {{#if completed}}
                                 <span class="todo">
@@ -52,7 +52,7 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">This Week</span>
                             <div class="divider"></div>
-                            <ul class="myUL">
+                            <ul class="myUL" id="myUL2">
                                 {{#each weeks}}
                                 {{#if completed}}
                                 <span class="todo">
@@ -86,7 +86,7 @@
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center div">This Month</span>
                             <div class="divider"></div>
-                            <ul class="myUL">
+                            <ul class="myUL" id="myUL3">
                                 {{#each months}}
                                 {{#if completed}}
                                 <li class="completed" id={{id}}>{{todo}}

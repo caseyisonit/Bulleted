@@ -49,13 +49,13 @@ module.exports = function(app) {
                 .then(function (membersPage) {
                     var hbsObject = {
                         loggedIn: true, 
-                        loggedOut:false, 
+                        loggedOut: false, 
                         todays: membersPage.todays,
                         weeks:membersPage.weeks,
                         months:membersPage.months,
                         journals:membersPage.journals
                     };
-                    return res.render("dashboard", hbsObject)
+                    return res.render("dashboard", hbsObject);
                 })
             
         } else {

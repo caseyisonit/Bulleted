@@ -2,174 +2,183 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function (app) {
-        //journal getting things
-        app.get("/api/journals", function (req, res) {
-            db.Journals.findAll({}).then(function (dbJournal) {
+    //journal getting things
+    app.get("/api/journals", function (req, res) {
+        db.Journals.findAll({}).then(function (dbJournal) {
+           
+            res.json(dbJournal);
+        });
+
+    });
+    app.post("/api/journals", function (req, res) {
+        console.log(req.body);
+        db.Journals.create({
+            body: req.body.body,
+            UserId: req.user.id
+        }).then(function (dbJournal) {
+            res.json(dbJournal);
+        });
+        res.status(200);
+
+    });
+    app.delete("/api/journals/:id", function (req, res) {
+        db.Journals.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function (dbJournal) {
                 res.json(dbJournal);
             });
+    })
 
-        });
-        app.post("/api/journals", function (req, res) {
-            console.log(req.body);
-            db.Journals.create({
-                body: req.body.body,
-                UserId: req.user.id
-            }).then(function (dbJournal) {
+    app.put("/api/journals", function (req, res) {
+        db.Journals.update({
+            body: req.body.body
+        }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbJournal) {
                 res.json(dbJournal);
             });
-            res.status(200);
-
     });
-        app.delete("/api/journals/:id", function (req, res) {
-            db.Journals.destroy({
-                    where: {
-                        id: req.params.id
-                    }
-                })
-                .then(function (dbJournal) {
-                    res.json(dbJournal);
-                });
-            })
 
-        app.put("/api/journals", function (req, res) {
-            db.Journals.update({
-                body: req.body.body
-                }, {
-                    where: {
-                        id: req.body.id
-                    }
-                })
-                .then(function (dbJournal) {
-                    res.json(dbJournal);
-                });
+    //todo Today list
+    app.get("/api/todays", function (req, res) {
+        db.Todays.findAll({}).then(function (dbTodays) {
+            res.json(dbTodays);
         });
 
-        //todo Today list
-        app.get("/api/todays", function (req, res) {
-            db.Todays.findAll({}).then(function (dbTodays) {
+    });
+    app.post("/api/todays", function (req, res) {
+        console.log(req.body);
+        db.Todays.create({
+            todo: req.body.todo,
+            UserId: req.user.id
+        }).then(function (dbTodays) {
+            res.json(dbTodays);
+        });
+        res.status(200);
+
+    });
+    app.delete("/api/todays/:id", function (req, res) {
+        db.Todays.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function (dbTodays) {
                 res.json(dbTodays);
             });
+    })
 
-        });
-        app.post("/api/todays", function (req, res) {
-            console.log(req.body);
-            db.Todays.create({
-               todo: req.body.todo,
-               UserId: req.user.id
-            }).then(function (dbTodays) {
+    app.put("/api/todays/:id", function (req, res) {
+        var completed = req.body.completed === "true"; // true or false
+        db.Todays.update({
+            completed: completed
+        }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbTodays) {
                 res.json(dbTodays);
             });
-            res.status(200);
-
     });
-        app.delete("/api/todays/:id", function (req, res) {
-            db.Todays.destroy({
-                    where: {
-                        id: req.params.id
-                    }
-                })
-                .then(function (dbTodays) {
-                    res.json(dbTodays);
-                });
-            })
 
-        app.put("/api/todays/:id", function (req, res) {
-            var completed = req.body.completed === "true"; // true or false
-            db.Todays.update({
-                   completed: completed
-                }, {
-                    where: {
-                        id: req.params.id
-                    }
-                })
-                .then(function (dbTodays) {
-                    res.json(dbTodays);
-                });
+    //todo Weeks List
+    app.get("/api/weeks", function (req, res) {
+        db.Weeks.findAll({}).then(function (dbWeeks) {
+            res.json(dbWeeks);
         });
 
-        //todo Weeks List
-        app.get("/api/weeks", function (req, res) {
-            db.Weeks.findAll({}).then(function (dbWeeks) {
+    });
+    app.post("/api/weeks", function (req, res) {
+        console.log(req.body);
+        db.Weeks.create({
+            todo: req.body.todo,
+            UserId: req.user.id
+        }).then(function (dbWeeks) {
+            res.json(dbWeeks);
+        });
+        res.status(200);
+
+    });
+    app.delete("/api/weeks/:id", function (req, res) {
+        db.Weeks.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function (dbWeeks) {
                 res.json(dbWeeks);
             });
+    })
 
-        });
-        app.post("/api/weeks", function (req, res) {
-            console.log(req.body);
-            db.Weeks.create({
-               todo: req.body.todo,
-               UserId: req.user.id
-            }).then(function (dbWeeks) {
+    app.put("/api/weeks/:id", function (req, res) {
+        console.log("weeks PUT route hit");
+
+        var completed = req.body.completed === "true"; // true or false
+
+        db.Weeks.update({
+            completed: completed
+        }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbWeeks) {
                 res.json(dbWeeks);
             });
-            res.status(200);
+    });
+
+    //todo Months List
+    app.get("/api/months", function (req, res) {
+        db.Months.findAll({}).then(function (dbMonths) {
+            res.json(dbMonths);
+        });
 
     });
-        app.delete("/api/weeks/:id", function (req, res) {
-            db.Weeks.destroy({
-                    where: {
-                        id: req.params.id
-                    }
-                })
-                .then(function (dbWeeks) {
-                    res.json(dbWeeks);
-                });
-            })
-
-        app.put("/api/weeks/:id", function (req, res) {
-            db.Weeks.update({
-                   todo: req.body.todo
-                }, {
-                    where: {
-                        id: req.body.id
-                    }
-                })
-                .then(function (dbWeeks) {
-                    res.json(dbWeeks);
-                });
+    app.post("/api/months", function (req, res) {
+        console.log(req.body);
+        db.Months.create({
+            todo: req.body.todo,
+            UserId: req.user.id
+        }).then(function (dbMonths) {
+            res.json(dbMonths);
         });
-
-        //todo Months List
-        app.get("/api/months", function (req, res) {
-            db.Months.findAll({}).then(function (dbMonths) {
-                res.json(dbMonths);
-            });
-
-        });
-        app.post("/api/months", function (req, res) {
-            console.log(req.body);
-            db.Months.create({
-               todo: req.body.todo,
-               UserId: req.user.id
-            }).then(function (dbMonths) {
-                res.json(dbMonths);
-            });
-            res.status(200);
+        res.status(200);
 
     });
-        app.delete("/api/months/:id", function (req, res) {
-            db.Months.destroy({
-                    where: {
-                        id: req.params.id
-                    }
-                })
-                .then(function (dbMonths) {
-                    res.json(dbMonths);
-                });
-            })
+    app.delete("/api/months/:id", function (req, res) {
+        db.Months.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function (dbMonths) {
+                res.json(dbMonths);
+            });
+    })
 
-        app.put("/api/months/:id", function (req, res) {
-            db.Months.update({
-                   todo: req.body.todo
-                }, {
-                    where: {
-                        id: req.body.id
-                    }
-                })
-                .then(function (dbMonths) {
-                    res.json(dbMonths);
-                });
-        });
+    app.put("/api/months/:id", function (req, res) {
+console.log("months PUT route hit");
+
+        var completed = req.body.completed === "true"; // true or false
+
+        db.Months.update({
+            completed: completed
+        }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbMonths) {
+                res.json(dbMonths);
+            });
+    });
 
 
 
