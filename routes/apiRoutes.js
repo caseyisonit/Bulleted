@@ -29,7 +29,7 @@ module.exports = function (app) {
                 .then(function (dbJournal) {
                     res.json(dbJournal);
                 });
-            })
+            });
 
         app.put("/api/journals", function (req, res) {
             db.Journals.update({
@@ -71,7 +71,7 @@ module.exports = function (app) {
                 .then(function (dbTodays) {
                     res.json(dbTodays);
                 });
-            })
+            });
 
         app.put("/api/todays/:id", function (req, res) {
             var completed = req.body.completed === "true"; // true or false
@@ -114,7 +114,7 @@ module.exports = function (app) {
                 .then(function (dbWeeks) {
                     res.json(dbWeeks);
                 });
-            })
+            });
 
         app.put("/api/weeks/:id", function (req, res) {
             db.Weeks.update({
@@ -156,7 +156,7 @@ module.exports = function (app) {
                 .then(function (dbMonths) {
                     res.json(dbMonths);
                 });
-            })
+            });
 
         app.put("/api/months/:id", function (req, res) {
             db.Months.update({
