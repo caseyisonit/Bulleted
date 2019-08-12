@@ -45,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
         User.hasMany(models.Journals, {as: "journals"}),
         User.hasMany(models.Todays, {as: "todays"}),
         User.hasMany(models.Weeks, {as: "weeks"}),
-        User.hasMany(models.Months, {as: "months"})
-    }
+        User.hasMany(models.Months, {as: "months"});
+    };
     return User;
 };

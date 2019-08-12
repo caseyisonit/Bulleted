@@ -19,19 +19,20 @@
                             <span class="card-title center">Today</span>
                             <div class="divider"></div>
                             <ul class="myUL">
+                                
                                 {{#each todays}}
                                 {{#if completed}}
                                 <span class="todo">
                                     <li class="completed" id={{id}}>{{todo}}
-                                    <span class="deleteItem" id={{id}}>X</span></li>
+                                        <span class="deleteItem" id={{id}}>X</span></li>
                                 </span>
                                 {{else}}
                                 <span class="todo">
                                     <li id={{id}}>{{todo}}
-                                    <span class="deleteItem" id={{id}}>X</span></li>
-                                    </span>
-                                    {{/if}}
-                                    {{/each}}
+                                        <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
+                                {{/if}}
+                                {{/each}}
                             </ul>
                         </div>
                         <div class="card-action">
@@ -57,12 +58,12 @@
                                 {{#if completed}}
                                 <span class="todo">
                                     <li class="completed" id={{id}}>{{todo}}
-                                    <span class="deleteItem" id={{id}}>X</span></li>
+                                        <span class="deleteItem" id={{id}}>X</span></li>
                                 </span>
                                 {{else}}
                                 <span class="todo">
                                     <li id={{id}}>{{todo}}
-                                    <span class="deleteItem" id={{id}}>X</s></li>
+                                        <span class="deleteItem" id={{id}}>X</span></li>
                                 </span>
                                 {{/if}}
                                 {{/each}}
@@ -84,16 +85,20 @@
                 <div class="col s12 m4 l8">
                     <div class="card white">
                         <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center div">This Month</span>
+                            <span class="card-title center">This Month</span>
                             <div class="divider"></div>
                             <ul class="myUL">
                                 {{#each months}}
                                 {{#if completed}}
-                                <li class="completed" id={{id}}>{{todo}}
-                                <span class="deleteItem" id={{id}}>X</span></li>
+                                <span class="todo">
+                                    <li class="completed" id={{id}}>{{todo}}
+                                        <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
                                 {{else}}
-                                <li id={{id}}>{{todo}}
-                                <span class="deleteItem" id={{id}}>X</span></li>
+                                <span class="todo">
+                                    <li id={{id}}>{{todo}}
+                                        <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
                                 {{/if}}
                                 {{/each}}
                             </ul>
@@ -119,10 +124,10 @@
                             <div id="journal-entries">
                                 {{#each journals}}
                                 <div>
-                                <h6 "journal-title">{{createdAt}} <span class="deleteItem" id={{id}}>X</span></h6>
-                                <p class="entry" id={{id}}>{{body}} </p>
-                                <div class="divider" id="journal-divider"></div>
-                                </div>  
+                                    <h6 "journal-title">{{createdAt}} <span class="deleteItem" id={{id}}>X</span></h6>
+                                    <p class="entry" id={{id}}>{{body}} </p>
+                                    <div class="divider" id="journal-divider"></div>
+                                </div>
                                 {{/each}}
                             </div>
                         </div>
