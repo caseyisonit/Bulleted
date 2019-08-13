@@ -106,7 +106,7 @@ for (var i = 0; i < allTitles.length; i++){
     var titleText = $(allTitles[i]).text().split(" ").splice(0, 4).join(" ");
     console.log("title text", titleText);
     $(allTitles[i]).text(titleText);
-};
+}
 
 // Click events
 $(function () {
@@ -116,8 +116,7 @@ $(function () {
   $("#signupButton").on("click", function () {
       window.location.replace("http://localhost:8000/signup");
   });
-  $("#startButton").on("click", function (event) {
-      event.preventDefault();
+  $("#startButton").on("click", function () {
       window.location.replace("http://localhost:8000/signup");
   });
   $("#goToUserPage").on("click", function () {
