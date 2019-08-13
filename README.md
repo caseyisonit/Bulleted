@@ -1,18 +1,48 @@
-# Bulleted
-
-## Description
-Bulleted is an online bullet journal meant to make the flexibility and customization of bullet journals more accesible in your day to day life.
+Bulleted is an online bullet journal meant to make organizing your life and thoughts more accesible in your day to day life.
 
 ## Usage
-You will presently be able to include a personal journal as well as daily, weekly and monthly todo lists
+Bulleted can be used as a personal journal as well as daily, weekly and monthly todo lists
 
-## Roadmap
-For future releases we are looking to make the site even more customizable. Adding in functionalities for trackers (i.e period tracker, habit tracker). Weather API access,
-astrology information as well as the ability to customize the general look and feel to exactly what your heart desires.
+## Technologies Used
+**Frontend**
+* HTML5
+* CSS
+* JAVASCRIPT
+* JQUERY
+* MATERIALIZE
+
+**Backend**
+* BCRYPTJS
+* CONNECT-FLASH
+* NODE
+* DOTENV
+* MOMENT
+* PASSPORT
+* EXPRESS
+* EXPRESS-HANDLEBARS
+* EXPRESS-SESSION
+* MYSQL2
+* SEQUELIZE
+
+## Roadmap - Looking Forward
+**Functionality**
+* Log In / Sign Up Modals
+* Save password to local storage 
+* Reset password
+* Move items between lists/tables
+* Edit content
+
+**Features**
+* Trackers
+* Stickers
+* Weather API
+* Moon Phases / Astrology / Mercury Retrograde Alert
 
 ## Authors and acknowledgment
-Throughout this project we had
-Carolyn Floyd- database and joins
-Casey Eickhoff-routing and styling
-Kristen Christeson- routing and functionality
-Rachael Whitefield-  authorization and styling
+[Carolyn Floyd](https://github.com/DiabloAzul33) - Backend, Database
+
+[Casey Eickhoff](https://github.com/caseyisonit) - Frontend and Routing
+
+[Kristen Christeson](https://github.com/KCEliza) - Backend, Deployment
+
+[Rachael Whitefield](https://github.com/RachaelWhitefield) -  Authorization
