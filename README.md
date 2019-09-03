@@ -1,4 +1,4 @@
-# [Bulleted](https://bulleted-cakrraca.herokuapp.com/)
+# [Bulleted](https://warm-springs-94136.herokuapp.com/)
 Bulleted is an online bullet journal meant to make organizing your life and thoughts more accesible in your day to day life.
 
 ## Usage
