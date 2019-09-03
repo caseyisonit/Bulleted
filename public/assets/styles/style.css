@@ -48,12 +48,18 @@ p {
   padding-top: 20px;
   margin: 0px 50px;
 }
+
 .footerP {
   padding-top: 0;
 }
 
-.sidenav-trigger {
-  color: #ffc107;
+.feature-img {
+  max-width: 90%;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  border: #ffc107 solid 5px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .parallax-container {
@@ -74,13 +80,8 @@ p {
   -webkit-filter: blur(4px);  
 }
 
-.feature-img {
-  max-width: 90%;
-  height: auto;
-  margin: 0 auto;
-  position: relative;
-  border: #ffc107 solid 5px;
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.sidenav-trigger {
+  color: #ffc107;
 }
 
 .space{
@@ -88,11 +89,6 @@ p {
 }
 
 @media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 50%;
-  }
-
   .feature-img {
     margin-bottom: 30px;
     max-width: 350px;
@@ -118,6 +114,11 @@ p {
   #imageblock {
     order: 1;
   }
+
+  .parallax-container .section {
+    position: absolute;
+    top: 50%;
+  }
 }
 
 @media only screen and (max-width : 992px) {
@@ -125,10 +126,6 @@ p {
     margin-bottom: 30px;
     max-width: 100%;
   }
-}
-
-footer.page-footer {
-  margin: 75px 0 0 0;
 }
 
 
@@ -264,45 +261,3 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
 .entry {
   position: relative;
 }
-
-.hero404 {
-  background-image: url("https://www.udiscovermusic.com/wp-content/uploads/2018/10/Lionel-Richie-self-titled-album-cover-web-optimised-820.jpg");
-  width: 100vw;
-  height: 100vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.alert404 {
-  text-align: center;
-  color: white;
-  font-size: 100px;
-  font-weight: bold;
-  position: relative;
-  top: 50%;
-  left: 15%;
-}
-
-.hello {
-  text-align: center;
-  color: white;
-  font-size: 60px;
-  font-weight: bold;
-  position: relative;
-  top: 55%;
-  left: 15%;
-}
-
-.home {
-  text-align: center;
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  position: relative;
-  top: 60%;
-  left: 10%;
-  width: 200px;
-  border: 5px solid white;
-  padding: 15px;
-}
-
